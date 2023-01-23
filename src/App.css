@@ -1,4 +1,13 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@100;300;400;700&display=swap');
+
+* {
+    font-family: 'Noto Serif Thai', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -32,7 +41,8 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
-}
+} */
