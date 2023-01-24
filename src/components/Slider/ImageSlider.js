@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './ImageSlider.css'
 import BtnSlider from './BtnSlider'
 import dataSlider from './dataSlider'
@@ -6,21 +6,6 @@ import dataSlider from './dataSlider'
 
 
 const ImageSlider = () => {
-    // const [currentIndex, setCurrentUser] = useState(0);
-    
-    // const slideContainer = {
-    //     height: "100%",
-    //     position: "relative",
-    // };
-    // const slideStyle = {
-    //     width: "100%",
-    //     height: "100%",
-    //     borderRadius: "10px",
-    //     backgroundPosition: "center",
-    //     backgroundSize: "cover",
-    //     backgroundImage: `url(${slides[currentIndex].url})`,
-    // };
-
     const [slideIndex, setSlideIndex] = useState(1)
 
     const nextSlide = () => {
@@ -45,6 +30,13 @@ const ImageSlider = () => {
         setSlideIndex(index)
     }
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            nextSlide();
+        },3000);
+        return () => clearInterval(interval);
+    });
+
     return (
         <div className="container-slider">
             {dataSlider.map((obj, index) => {
@@ -59,8 +51,8 @@ const ImageSlider = () => {
                     </div>
                 )
             })}
-            <BtnSlider moveSlide={nextSlide} direction={"next"} />
-            <BtnSlider moveSlide={prevSlide} direction={"prev"}/>
+            {/* <BtnSlider moveSlide={nextSlide} direction={"next"} />
+            <BtnSlider moveSlide={prevSlide} direction={"prev"}/> */}
 
             <div className="container-dots">
                 {Array.from({length: 5}).map((item, index) => (

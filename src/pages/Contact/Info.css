@@ -115,11 +115,28 @@ RIGHT
     width: 50px;
 }
 
-@media screen and (max-width: 500px) {
-    .contact-info-heading {
-        padding-right: 0;
+.FacebookIcon {
+    width: 40px;
+}
+
+.YoutubeIcon {
+    width: 40px;
+    padding-top: 3px;
+}
+
+.TwitterIcon{
+    width: 40px;
+}
+
+
+@media screen and (max-width: 400px) {
+    .contact-title h2 {
+        font-size: 25px;
     }
-    .contact-info-heading h2 {
-        font-size: 22px;
+}
+
+@media screen and (max-width: 300px) {
+    .contact-title h2 {
+        font-size: 20px;
     }
 }

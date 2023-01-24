@@ -20,9 +20,9 @@ function LoginPage() {
         // #1 container
         <div id="login-root">
             <div id="login-section-1">
-                <div id="slider-container">
+                
                     <ImageSlider />
-                </div>
+                
             </div>
             {/* #2 forms-container*/}
             <div id="login-section-2">

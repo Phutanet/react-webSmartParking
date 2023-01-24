@@ -21,7 +21,12 @@ function ContactPage() {
       {/* close tag section2 */}
 
       <div id="contact-section-3">
+        <div id='map-title'>
+          <h2>ตำแหน่งสถานที่จอดรถ</h2>
+        </div>
+        
         <Map />
+
       </div>
       {/* close tag section3 */}
     </div>

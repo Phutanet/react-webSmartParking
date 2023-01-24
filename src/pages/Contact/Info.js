@@ -1,9 +1,6 @@
 import React from 'react'
 import './Info.css'
-import { ReactComponent as FacebookIcon } from '../../images/facebook-icon.svg';
-import { ReactComponent as YoutubeIcon } from '../../images/youtube-icon.svg';
-import { ReactComponent as TwitterIcon } from '../../images/twitter-icon.svg';
-import NectecIcon from '../../images/nectec-icon.jpg';
+
 
 function Info() {
   return (
@@ -55,7 +52,7 @@ function Info() {
                 <a className="social-link-button" href="https://www.facebook.com/NECTEC/">
                     <div className="social-icon">
                         {/* <i className="fa-brands fa-facebook"></i> */}
-                        <FacebookIcon width="40px" />
+                        <img src={process.env.PUBLIC_URL + `/images/facebook-icon.svg`} className="FacebookIcon" />
                     </div>
                     <div className="social-label">
                         <p>NECTEC NSTDA</p>
@@ -66,7 +63,7 @@ function Info() {
                 <a className="social-link-button" href="https://www.nectec.or.th/en/">
                     <div className="social-icon">
                         {/* <i className="fa-solid fa-earth-americas"></i> */}
-                        <img src={NectecIcon} className="NectecIcon" alt=""/>
+                        <img src={process.env.PUBLIC_URL + `/images/nectec-icon.jpg`} className="NectecIcon" />
                     </div>
                     <div className="social-label">
                         <p>NECTEC : National Electronics and Computer Technology Center</p>
@@ -77,7 +74,7 @@ function Info() {
                 <a className="social-link-button" href="https://www.youtube.com/@nectec">
                     <div className="social-icon">
                         {/* <i className="fa-brands fa-youtube"></i> */}
-                        <YoutubeIcon width="40px" />
+                        <img src={process.env.PUBLIC_URL + `/images/youtube-icon.svg`} className="YoutubeIcon" />
                     </div>
                     <div className="social-label">
                         <p>NECTEC</p>
@@ -88,7 +85,7 @@ function Info() {
                 <a className="social-link-button" href="https://twitter.com/nectec">
                     <div className="social-icon">
                         {/* <i className="fa-brands fa-twitter"></i> */}
-                        <TwitterIcon width="40px" />
+                        <img src={process.env.PUBLIC_URL + `/images/twitter-icon.svg`} className="TwitterIcon" />
                     </div>
                     <div className="social-label">
                         <p>@NECTEC</p>

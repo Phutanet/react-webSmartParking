@@ -32,7 +32,35 @@ section3 style
 #contact-section-3 {
     height: 100vh;
     width: 100%;
-    background-color: green;
+    background-color: #444;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
+#map-title h2 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+@media screen and (max-width: 400px) {
+    #map-title h2 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #map-title h2 {
+        font-size: 20px;
+    }
+}
