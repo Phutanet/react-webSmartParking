@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './ImageSlider.css'
-import BtnSlider from './BtnSlider'
+// import BtnSlider from './BtnSlider'
 import dataSlider from './dataSlider'
 
 
@@ -17,14 +17,14 @@ const ImageSlider = () => {
         }
     }
 
-    const prevSlide = () => {
-        if(slideIndex !== 1){
-            setSlideIndex(slideIndex - 1)
-        }
-        else if (slideIndex === 1){
-            setSlideIndex(dataSlider.length)
-        }
-    }
+    // const prevSlide = () => {
+    //     if(slideIndex !== 1){
+    //         setSlideIndex(slideIndex - 1)
+    //     }
+    //     else if (slideIndex === 1){
+    //         setSlideIndex(dataSlider.length)
+    //     }
+    // }
 
     const moveDot = index => {
         setSlideIndex(index)
@@ -47,6 +47,7 @@ const ImageSlider = () => {
                     >
                         <img 
                         src={process.env.PUBLIC_URL + `/images/image-${index + 1}.jpg`} 
+                        alt=""
                         />
                     </div>
                 )

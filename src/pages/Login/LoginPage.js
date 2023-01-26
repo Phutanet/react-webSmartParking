@@ -17,19 +17,14 @@ function LoginPage() {
     }
 
     return (
-        // #1 container
         <div id="login-root">
             <div id="login-section-1">
-                
-                    <ImageSlider />
-                
+                <ImageSlider />
             </div>
-            {/* #2 forms-container*/}
+
             <div id="login-section-2">
-            {/* #3 signin-signup */}
                 <div id="login-form-container">
                     <form id="login-form" onSubmit={handleSubmit}>
-                        {/* <label className="topic-label" htmlFor="email">อีเมล</label> */}
                         <h2>เข้าสู่ระบบ</h2>
                         <span>สำหรับเจ้าหน้าที่ดูแลระบบ</span>
                         <div className="login-input-field">
@@ -44,7 +39,6 @@ function LoginPage() {
                         </div>
                                 
                                     
-                        {/* <label className="topic-label" htmlFor="password">รหัสผ่าน</label> */}
                         <div className="login-input-field">
                             <i className="fas fa-lock"></i>
                             <input 

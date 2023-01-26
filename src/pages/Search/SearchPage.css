@@ -1,0 +1,231 @@
+#search-root {
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-container {
+    /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.hero-container h1 {
+    /* background-color: aqua; */
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+
+#search-form {
+    /* background-color: yellow; */
+    /* background: none; */
+    max-width: 800px;
+    width: 100%;
+    max-height: 800px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.search-input-field {
+    /* background-color: purple; */
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 45px;
+    height: 100%;
+}
+
+
+.search-input-field input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+}
+
+
+.search-input-field input:placeholder-shown {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #aaa;
+}
+
+/* ------------------------------------
+Select Section
+------------------------------------ */
+
+.search-select-field {
+
+    max-width: 600px;
+    width: 100%;
+    max-height: 45px;
+    height: 100%;
+
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    position: relative;
+    display: flex;
+    line-height: 3;
+    border: none;
+    border-radius: .25em;
+}
+
+.search-select-field::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: none;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+}
+
+.search-select-field:hover::after {
+    color: rgb(42, 185, 112);
+}
+
+.search-select-field select {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background-image: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+}
+
+.search-select-field select::-ms-expand {
+    display: none;
+}
+
+.search-button {
+    width: 25%;
+    max-height: 45px;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: rgb(39, 215, 109);
+    color: white;
+    text-transform: 600;
+    margin: 10px 0;
+    transition: all 0.5s;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.search-button:hover {
+    background-color: rgb(42, 185, 112);
+}
+
+@media screen and (max-width: 600px) {
+    .hero-container h1 {
+        font-size: 35px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .hero-container h1 {
+        font-size: 30px;
+    }
+
+    .search-input-field input:placeholder-shown {
+        font-size: 15px;
+    }
+
+    .search-select-field select {
+        font-size: 15px;
+    }
+
+    .search-button {
+        max-height: 35px;
+        height: 100%;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .hero-container h1 {
+        font-size: 20px;
+    }
+
+    .search-input-field input:placeholder-shown {
+        font-size: 12px;
+    }
+
+    .search-select-field select {
+        font-size: 12px;
+    }
+
+    .search-button {
+        max-height: 25px;
+        height: 100%;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .hero-container h1 {
+        font-size: 15px;
+    }
+
+    .search-input-field input:placeholder-shown {
+        font-size: 9px;
+    }
+
+    .search-select-field select {
+        font-size: 9px;
+    }
+
+    .search-button {
+        font-size: 9px;
+    }
+}
+
+/* ------------------------------------
+Select Section
+------------------------------------ */
+
+#search-section2 {
+    height: 100vh;
+    background-color: pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

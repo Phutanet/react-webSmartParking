@@ -46,6 +46,8 @@
         display: block;
         color: #fff;
         font-size: 2rem;
+        margin-top: 5px;
+        margin-right: 20px;
     }
 
     .header {
