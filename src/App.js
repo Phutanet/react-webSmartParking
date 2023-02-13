@@ -1,51 +1,59 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
-import Navbar from './components/Navbar/Navbar'
-import Home from './pages/Home/HomePage'
-import Search from './pages/Search/SearchPage'
+import NavbarExternal from './components/navbar/NavbarExternal'
+import Carpark from './pages/external/Carpark'
+import SearchCar from './pages/external/SearchCar'
 import Contact from './pages/Contact/ContactPage'
-import Login from './pages/Login/LoginPage'
-import Footer from './components/Footer/Footer'
+import Login from './pages/external/Login'
+
+import NavbarInternal from './components/navbar/NavbarInternal'
+import CarparkCRUD from './pages/internal/CarparkCRUD'
+import CCTV from './pages/internal/CCTV'
+import MessageDealing from './pages/internal/MessageDealing'
+import UserAccounts from './pages/internal/UserAccounts'
+import Register from './pages/internal/Register'
+import SystemSetting from './pages/internal/SystemSetting'
+import Profile from './pages/internal/Profile'
+
+import Footer from './components/footer/Footer'
+
+import GPT from './pages/external/GPT'
 
 
 
 function App() {
-  const token = localStorage.getItem('accessToken');
-
-  if (!token) {
-    let component
-    switch (window.location.pathname) {
-      case '/':
-        component = <Home />
-        break
-      case '/search':
-        component = <Search />
-        break
-      case '/contact':
-        component = <Contact />
-        break
-      case '/login':
-        component = <Login />
-        break
-      default:
-        component = <Home />
-        break
-    }
+  const accessToken = localStorage.getItem('accessToken')
+  if(!accessToken) {
     return (
       <>
-      <Navbar />
-      {component}
+      <NavbarExternal />
+      <Routes>
+        <Route path='/' element={<GPT />} />
+        <Route path='/EXT/search-car' element={<SearchCar />} />
+        <Route path='/EXT/contact' element={<Contact />} />
+        <Route path='/EXT/login' element={<Login />} />
+      </Routes>
       <Footer />
-      </>
+    </>
     );
   }
-
-
-  // return (
-  //   <>
-  //   <Navbar2 />
-  //   </>
-  // );
+  
+  return (
+    <>
+    <NavbarInternal />
+    <Routes>
+      <Route path='/INT/carpark-crud' element={<CarparkCRUD />} />
+      <Route path='/INT/cctv' element={<CCTV />} />
+      <Route path='/INT/message-dealing' element={<MessageDealing />} />
+      <Route path='/INT/user-accounts' element={<UserAccounts />} />
+      <Route path='/INT/register' element={<Register />} />
+      <Route path='/INT/system-setting' element={<SystemSetting />} />
+      <Route path='/INT/profile' element={<Profile />} />
+    </Routes>
+    <Footer />
+    </>
+  );
 
 }
 

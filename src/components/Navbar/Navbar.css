@@ -1,90 +1,197 @@
-#nav-root {
-    background: rgb(36, 37, 38);
-    height: 80px;
+.navbar {
+  background: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-#nav-container {
-    max-width: 960px;
-    margin: 0 auto;
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
 }
 
-#header-container {
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    align-items: center;
+.container {
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 50px;
+  padding-left: 50px;
 }
 
-.logo-container a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 2rem;
+.navbar-logo {
+  justify-self: start;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.menu {
-    display: flex;
-    list-style-type: none;
+.navbar-logo a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
-.menu li {
-    padding-right: 2rem;
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  text-align: center;
+  justify-content: flex-end;
 }
 
-.menu li a {
-    text-decoration: none;
-    color: #fff;
-    transition: 0.3s ease-in-out;
+.nav-item {
+  margin-right: 2rem;
+  border-bottom: 2px solid transparent;
 }
 
-.mobile-menu {
-    display: none;
+/* .sub-nav-item {
+  background-color: pink;
+} */
+
+.nav-item:hover {
+  border-bottom: 3px solid rgb(255, 127, 56);
 }
+
+/* ------------------------------
+Drop down navbar menu
+------------------------------ */
+
+.nav-item ul {
+  list-style: none;
+  position: absolute;
+  width: 150px;
+  background: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%);
+  margin-top: 1.5px;
+  display: none;
+}
+
+.nav-item ul li {
+  width: 100%;
+  display: flex;
+  padding-left: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid transparent;
+}
+
+.nav-item ul li:hover {
+  border-bottom: 3px solid rgb(255, 127, 56);
+}
+
+.sub-nav-links {
+  text-decoration: none;
+  color: #fff;
+}
+
+.sub-nav-links:hover {
+  color: #ff7300;
+}
+
+.nav-item:hover > ul {
+  display: initial;
+}
+
+/* ------------------------------
+End of Drop down navbar menu
+------------------------------ */
+
+
+.nav-links {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 100%;
+}
+
+.activated {
+  color: rgb(255, 127, 56);
+}
+
+.menu-icon {
+  display: none;
+}
+
 
 @media screen and (max-width: 960px) {
-    .mobile-menu {
-        display: block;
-        color: #fff;
-        font-size: 2rem;
-        margin-top: 5px;
-        margin-right: 20px;
-    }
+  .menu-icon {
+    display: block;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
 
-    .header {
-        padding: 0 2rem;
-    }
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 0;
+    transition: all 1s ease;
+  }
 
-    .menu {
-        width: 100%;
-        height: auto;
-        display: flex;
-        position: absolute;
-        flex-direction: column;
-        top: 64px;
-        left: -100%;
-        opacity: 0;
-        transition: 0.5s ease;
-    }
 
-    .menu li {
-        padding-right: 0;
-    }
+  .nav-menu.active {
+    background: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%);
+    left: 0;
+    opacity: 1;
+    transition: all 1s ease;
+    z-index: 1;
+  }
 
-    .menu.active {
-        background: rgb(36, 37, 38);
-        left: 0;
-        opacity: 1;
-        z-index: 1;
-        padding-left: 0;
-        align-content: center;
-        transition: 0.5s ease;
-    }
+  .nav-menu li a {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
 
-    .menu-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 10vw;
-        padding: 10px 0;
-    }
+  .nav-menu li a:hover {
+    color: #ff7300;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+  }
+
+  .nav-item:hover {
+    border: none;
+  }
+
+  .nav-item {
+    width: 50%;
+  }
+
+  /* sub-menu-style(onClick hamberger icon) */
+  .nav-item ul {
+    display: block;
+    background: none;
+    position: relative;
+    width: 100%;
+
+  }
+
+  .nav-item ul li {
+    width: 100%;
+    /* max-height: 40px; */
+    height: 100%;
+    display: flex;
+    padding-left: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid transparent;
+  }
+
 }

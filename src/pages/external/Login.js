@@ -1,20 +1,53 @@
 import React, { useState } from "react";
-import "./LoginPage.css"
-import ImageSlider from '../../components/Slider/ImageSlider'
+import axios from "axios";
+import "./Login.css";
+import ImageSlider from '../../components/slider/ImageSlider';
+import Swal from 'sweetalert2'
 
+
+async function loginUser(credentials) {
+    return await axios
+    .post ("/smartparking/auth/login", credentials)
+    .then(function (response) {
+        return (response['data'])
+    })
+    //สำหรับ Axios, ในกรณีที่ POST request ไม่ผ่าน(error) จะทำตาม condition ใน catch
+    .catch(err => {
+        Swal.fire({
+            title: 'เข้าสู่ระบบไม่สำเร็จ',
+            text: err.response['data'],
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        console.log(err)
+    })
+}
 
 function LoginPage() {
     const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        const data = new FormData(e.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
+        const response = await loginUser ({
+            email,
+            password
         });
-    }
+
+        if (response['accessToken'] != null) {
+            Swal.fire({
+                title: 'เข้าสู่ระบบสำเร็จ',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            }).then(() => {
+                localStorage.setItem('accessToken', response['accessToken']);
+                window.location.href = '/INT/carpark-crud';
+            })
+        }
+    };
+
 
     return (
         <div id="login-root">
@@ -24,7 +57,7 @@ function LoginPage() {
 
             <div id="login-section-2">
                 <div id="login-form-container">
-                    <form id="login-form" onSubmit={handleSubmit}>
+                    <form id="login-form" method="post" onSubmit={handleSubmit}>
                         <h2>เข้าสู่ระบบ</h2>
                         <span>สำหรับเจ้าหน้าที่ดูแลระบบ</span>
                         <div className="login-input-field">
@@ -32,7 +65,7 @@ function LoginPage() {
                             <input 
                             type="email"
                             name="email"
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={e => setEmail(e.target.value)}
                             value={email} 
                             placeholder="อีเมล / Email" 
                             />
@@ -44,8 +77,8 @@ function LoginPage() {
                             <input 
                             type="password"
                             name="password"
-                            onChange={(e) => setPass(e.target.value)}
-                            value={pass}
+                            onChange={e => setPassword(e.target.value)}
+                            value={password}
                             placeholder="รหัสผ่าน / Password"
                             />
                         </div>

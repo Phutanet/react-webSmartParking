@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import './ContactForm.css';
+import React, { useState } from 'react'
+import './ContactForm.css'
 
 
 
 function ContactForm() {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [topic, setTopic] = useState('');
-    const [content, setContent] = useState('');
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [topic, setTopic] = useState('')
+    const [content, setContent] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = new FormData(e.currentTarget);
+        const data = new FormData(e.currentTarget)
         console.log({
             email: data.get('email'),
             name: data.get('name'),

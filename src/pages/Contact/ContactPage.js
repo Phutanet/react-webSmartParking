@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react'
 import './ContactPage.css'
-import ContactForm from './ContactForm';
-import Info from './Info';
-import Map from './Map';
+import ContactForm from './ContactForm'
+import Info from './Info'
+import Map from './Map'
 
 
 

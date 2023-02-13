@@ -1,35 +1,63 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import './ImageSlider.css'
-// import BtnSlider from './BtnSlider'
-import dataSlider from './dataSlider'
-
+import axios from 'axios'
 
 
 const ImageSlider = () => {
+    const firstRender = useRef(true)
+    const [dataResponse, setDataResponse] = useState(null)
     const [slideIndex, setSlideIndex] = useState(1)
+    const [pathArray, setPathArray] = useState([])
+
+    useEffect(() => {
+        if (firstRender.current) {
+            firstRender.current = false;
+
+            axios.get('/smartparking/news')
+            .then(res => {
+                setDataResponse(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+            // mapDataArray();
+        }
+    }, []);
+
+    useEffect(() => {
+        if(dataResponse !== null){
+            setPathArray(dataResponse['data']);
+        }
+    })
+
+    // const mapDataArray = () => {
+    //     let check = true;
+    //     while (check) {
+    //         if (newsObj !== null) {
+    //             setNewsPathArray(newsObj['data']);
+    //             console.log("Array news path is already set");
+    //             check = false
+    //         }
+    //     }
+    // }
+
 
     const nextSlide = () => {
-        if(slideIndex !== dataSlider.length){
+        if(slideIndex !== dataResponse['data'].length){
             setSlideIndex(slideIndex + 1)
         } 
-        else if (slideIndex === dataSlider.length){
+        else if (slideIndex === dataResponse['data'].length){
             setSlideIndex(1)
         }
     }
 
-    // const prevSlide = () => {
-    //     if(slideIndex !== 1){
-    //         setSlideIndex(slideIndex - 1)
-    //     }
-    //     else if (slideIndex === 1){
-    //         setSlideIndex(dataSlider.length)
-    //     }
-    // }
 
     const moveDot = index => {
         setSlideIndex(index)
     }
 
+// ทำการ slide อัตโนมัติ
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
@@ -38,26 +66,26 @@ const ImageSlider = () => {
     });
 
     return (
-        <div className="container-slider">
-            {dataSlider.map((obj, index) => {
+        <div className="container-slider" >
+            {pathArray.map((object, index) => {
                 return (
                     <div
-                    key={obj.id}
+                    // ในกรณีที่ไม่มี id key ให้กำหนด key={index}
+                    key={index}
                     className={slideIndex === index + 1 ? "slide active-anim" : "slide"}
                     >
                         <img 
-                        src={process.env.PUBLIC_URL + `/images/image-${index + 1}.jpg`} 
+                        src={`https://smart-park.ino.nectec.or.th:60249${object.path}`} 
                         alt=""
                         />
                     </div>
                 )
             })}
-            {/* <BtnSlider moveSlide={nextSlide} direction={"next"} />
-            <BtnSlider moveSlide={prevSlide} direction={"prev"}/> */}
 
             <div className="container-dots">
-                {Array.from({length: 5}).map((item, index) => (
+                {Array.from({length: pathArray.length}).map((item, index) => (
                     <div 
+                    key={index}
                     onClick={() => moveDot(index + 1)}
                     className={slideIndex === index + 1 ? "dot active" : "dot"}
                     ></div>
