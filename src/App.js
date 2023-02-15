@@ -18,7 +18,6 @@ import Profile from './pages/internal/Profile'
 
 import Footer from './components/footer/Footer'
 
-import GPT from './pages/external/GPT'
 
 
 
@@ -29,7 +28,7 @@ function App() {
       <>
       <NavbarExternal />
       <Routes>
-        <Route path='/' element={<GPT />} />
+        <Route path='/' element={<Carpark />} />
         <Route path='/EXT/search-car' element={<SearchCar />} />
         <Route path='/EXT/contact' element={<Contact />} />
         <Route path='/EXT/login' element={<Login />} />

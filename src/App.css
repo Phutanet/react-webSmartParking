@@ -7,9 +7,10 @@
   box-sizing: border-box;
 }
 
-.root{
+.root {
   width: 100%;
 }
+
 
 /* .leaflet-container {
   height: 600px;

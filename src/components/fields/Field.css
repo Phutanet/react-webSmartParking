@@ -88,7 +88,7 @@ input:invalid[focused="true"] ~ span {
     text-align: center;
 }
 
-/* ----------------Style for In Duo field---------------- */
+/* ----------------Style for Duo field---------------- */
 .duo-field {
     display: flex;
     justify-content: center;

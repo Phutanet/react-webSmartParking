@@ -4,18 +4,18 @@ import axios from 'axios'
 function Profile() {
   const firstRender = useRef(true)
   const [dataResponse, setDataResponse] = useState(null)
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [employeeId, setEmployeeId] = useState('');
-  const [accountRole, setAccountRole] = useState('');
-  const [position, setPosition] = useState('');
-  const [department, setDepartment] = useState('');
-  const [company, setCompany] = useState('');
-  const [phone, setPhone] = useState('');
-  const [id, setId] = useState('');
-  const [createAt, setCreateAt] = useState('');
-  const [latestUpdate, setLatestUpdate] = useState('');
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [employeeId, setEmployeeId] = useState('')
+  const [accountRole, setAccountRole] = useState('')
+  const [position, setPosition] = useState('')
+  const [department, setDepartment] = useState('')
+  const [company, setCompany] = useState('')
+  const [phone, setPhone] = useState('')
+  const [id, setId] = useState('')
+  const [createAt, setCreateAt] = useState('')
+  const [latestUpdate, setLatestUpdate] = useState('')
 
 
   useEffect(() => {
@@ -30,7 +30,6 @@ function Profile() {
       .get('/smartparking/profile/me', {headers: header})
       .then(res => {
         setDataResponse(res.data)
-        // console.log(res)
       })
       .catch(err => {
         console.log(err)

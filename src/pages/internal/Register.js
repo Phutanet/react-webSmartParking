@@ -58,23 +58,13 @@ function Register() {
     axios
     .post('/smartparking/auth/register', data, {headers: header})
     //สำหรับ Axios, ในกรณีที่ POST request ผ่าน โปรแกรมจะทำงานตาม condition ภายใน then
-    .then(response => {
-      if(response.status !== 201) {
-        Swal.fire({
-          title: 'ลงทะเบียนไม่สำเร็จ',
-          text: response['message'],
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 1500
-        })
-      } else {
+    .then(res => {
         Swal.fire({
           title: 'ลงทะเบียนสำเร็จ',
           icon: 'success',
           showConfirmButton: false,
           timer: 1500
         })
-      }
     })
     //ในกรณีที่ request ไม่ผ่าน โปรแกรมจะทำงานตาม condition ภายใน catch
     .catch(err => {
