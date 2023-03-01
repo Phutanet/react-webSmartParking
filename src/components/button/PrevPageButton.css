@@ -1,0 +1,40 @@
+.prev-page-btn {
+    display: inline-block;
+    border-radius: 4px;
+    background: linear-gradient(132deg, rgb(255, 127, 56) 0.00%, rgb(255, 196, 108) 100.00%);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 6px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px; 
+    position: absolute;
+}
+
+.prev-page-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.prev-page-btn span::after {
+    content: '\00ab';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.prev-page-btn:hover span {
+    padding-right: 15px;
+}
+
+.prev-page-btn:hover span::after {
+    opacity: 1;
+    right: 0;
+}

@@ -1,24 +1,34 @@
 import React, { useState } from 'react'
 import './ContactForm.css'
+import axios from 'axios'
 
 
 
 function ContactForm() {
     const [email, setEmail] = useState('')
-    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
     const [topic, setTopic] = useState('')
     const [content, setContent] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = new FormData(e.currentTarget)
-        console.log({
-            email: data.get('email'),
-            name: data.get('name'),
-            topic: data.get('topic'),
-            content: data.get('content'),
+
+        const data = ({
+            email: email,
+            phone: phone,
+            title: topic,
+            msg: content
         });
-    }
+
+        axios
+            .post('/smartparking/contact/post', data)
+            .then((res) => {
+                console.log("response =",res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
 
   return (
@@ -40,13 +50,13 @@ function ContactForm() {
                 </div>
 
                 <div className="input-box">
-                    <label>ชื่อ-นามสกุล</label>
+                    <label>เบอร์โทรศัพท์</label>
                     <input 
                     type="text"
-                    name="name"
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
-                    placeholder="ตัวอย่างเช่น 'สมหมาย ใจดี' " 
+                    name="phone"
+                    onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
+                    placeholder="ตัวอย่างเช่น '063-123-4567' " 
                     />
                 </div>
 

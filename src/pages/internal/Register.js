@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Register.css'
 import InputField from '../../components/fields/InputField'
 import Button from '../../components/button/Button'
@@ -8,6 +8,8 @@ import Swal from 'sweetalert2'
 
 
 function Register() {
+  const firstRender = useRef(true)
+  const [rolesList, setRolesList] = useState([])
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [accountRole, setAccountRole] = useState('')
@@ -19,25 +21,29 @@ function Register() {
   const [company, setCompany] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
 
-  const roles = [
-    {
-      id: 1,
-      role: "admin"
-    },
-    {
-      id: 2,
-      role: "advance"
-    },
-    {
-      id: 3,
-      role: "basic"
+
+  //ดึง roles API เพื่อใช้แสดงใน selection
+  useEffect(() => {
+    if(firstRender.current) {
+      firstRender.current = false
+
+      const header = {
+        'accessToken': `${localStorage.getItem('accessToken')}`
+      }
+
+      axios
+      .get('/smartparking/auth/roles', {headers: header})
+      .then(res => {
+        setRolesList(res.data['data'])
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
-  ];
+  },[])
 
-
+  //เมื่อผู้ใช้งานกดปุ่ม "ลงทะเบียน"
   const handleSubmit = (e) => {
-    // e.preventDefault();
-
     const data = ({
       email: email,
       password: password,
@@ -70,12 +76,10 @@ function Register() {
     .catch(err => {
       Swal.fire({
         title: 'ลงทะเบียนไม่สำเร็จ',
-        // text: err.response['data']['msg'], กรณีที่ไม่กรอก หรือกรอกไม่ครบ แล้วกด submit (400)
-        // text: err.response['data'], กรณีที่กรอก email ซ้ำ (409)
-        text: err['message'],
+        text: err.response['data']['msg'],
         icon: 'error',
         showConfirmButton: false,
-        timer: 1500
+        timer: 2000
       })
       console.log(err)
     })
@@ -94,36 +98,38 @@ function Register() {
                 <InputField 
                 label="อีเมล" 
                 name="email" 
-                className="normal-field"
+                className="normal-field" 
                 type="email" 
                 value={email} 
                 onChange={e => setEmail(e.target.value)} 
                 placeholder="Email" 
-                disabled={false} 
-                errMessage="Email must be formatted correctly."
-                required={true}
-                pattern="/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/gm"
+                errMessage="Email must be formatted correctly." 
+                required={true} 
                 />
+
                 <InputField 
                 label="รหัสผ่าน" 
                 name="password" 
-                className="normal-field"
+                className="normal-field" 
                 type="password" 
                 value={password} 
                 onChange={e => setPassword(e.target.value)} 
                 placeholder="Password" 
-                disabled={false} 
-                errMessage="Password must be at least 8 characters long."
-                required={true}
-                pattern="/^.{8,}$/"
+                errMessage="Password must be at least 8 characters long." 
+                required={true} 
+                pattern="^.{8,}$"
                 />
 
                 <div className='normal-field'>
                   <label>ระดับบัญชี</label>
-                  <select name='accountRole' defaultValue='DEFAULT' onChange={e => setAccountRole(e.target.value)}>
+                  <select 
+                  name='accountRole' 
+                  defaultValue='DEFAULT' 
+                  onChange={e => setAccountRole(e.target.value)} 
+                  >
                     <option value='DEFAULT' id='selected-placeholder' disabled>Select An Options</option>
-                    {roles.map((item,index) => 
-                    <option key={index} value={item.role}>{item.role}</option>
+                    {rolesList.map((item,index) => 
+                    <option key={index} value={item.name}>{item.name}</option>
                     )}
                   </select>
                 </div>
@@ -131,81 +137,92 @@ function Register() {
                 <InputField 
                 label="ชื่อจริง" 
                 name="firstName" 
-                className="normal-field"
+                className="normal-field" 
                 type="text" 
                 value={firstName} 
                 onChange={e => setFirstName(e.target.value)} 
                 placeholder="First Name" 
-                disabled={false} 
-                errMessage="Name must not contain numbers or special characters."
-                required={true}
-                pattern="/^[a-zA-Z]+$/"
+                errMessage="Name must not contain numbers or special characters." 
+                required={true} 
+                pattern="^[a-zA-Z]+$"
                 />
+
                 <InputField 
                 label="นามสกุล" 
                 name="lastName" 
-                className="normal-field"
+                className="normal-field" 
                 type="text" 
                 value={lastName} 
                 onChange={e => setLastName(e.target.value)} 
                 placeholder="Last Name" 
-                disabled={false} 
-                errMessage="Surname must not contain numbers or special characters."
-                required={true}
+                errMessage="Surname must not contain numbers or special characters." 
+                required={true} 
                 pattern="^[a-zA-Z]+$"
                 />
+
                 <InputField 
                 label="รหัสพนักงาน" 
                 name="employeeId" 
-                className="normal-field"
+                className="normal-field" 
                 type="text" 
                 value={employeeId} 
-                onChange={e => setEmployeeId(e.target.value)}
+                onChange={e => setEmployeeId(e.target.value)} 
                 placeholder="Employee ID" 
-                disabled={false} 
+                errMessage="Please provide information." 
+                required={true} 
+                pattern="^.+$"
                 />
+
                 <InputField 
                 label="ตำแหน่งงาน" 
                 name="position" 
-                className="normal-field"
+                className="normal-field" 
                 type="text" 
                 value={position} 
-                onChange={e => setPosition(e.target.value)}
+                onChange={e => setPosition(e.target.value)} 
                 placeholder="Position" 
-                disabled={false} 
+                errMessage="Please provide information." 
+                required={true} 
+                pattern="^.+$"
                 />
+
                 <InputField 
                 label="แผนก/สังกัด" 
                 name="department" 
-                className="normal-field"
+                className="normal-field" 
                 type="text" 
                 value={department} 
-                onChange={e => setDepartment(e.target.value)}
+                onChange={e => setDepartment(e.target.value)} 
                 placeholder="Department" 
-                disabled={false} 
+                errMessage="Please provide information." 
+                required={true} 
+                pattern="^.+$"
                 />
+
                 <InputField 
                 label="บริษัท" 
                 name="company" 
-                className="normal-field"
+                className="normal-field" 
                 type="text" 
                 value={company} 
-                onChange={e => setCompany(e.target.value)}
+                onChange={e => setCompany(e.target.value)} 
                 placeholder="Company" 
-                disabled={false} 
+                errMessage="Please provide information." 
+                required={true} 
+                pattern="^.+$"
                 />
+
                 <InputField 
                 label="เบอร์โทรศัพท์" 
                 name="phoneNumber" 
-                className="normal-field"
+                className="normal-field" 
                 type="text" 
                 value={phoneNumber} 
                 onChange={e => setPhoneNumber(e.target.value)} 
                 placeholder="Phone Number" 
-                disabled={false} 
-                errMessage="Phone number can only contain numbers, spaces, and hyphens."
-                required={true}
-                pattern="/^[\d-\s]+$/"
+                errMessage="Phone number can only contain numbers, spaces, and hyphens." 
+                required={true} 
+                pattern="^[0-9\s-]+$"
                 />
             </form>
           </div>

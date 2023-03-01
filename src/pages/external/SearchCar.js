@@ -25,15 +25,23 @@ function SearchPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = new FormData(e.currentTarget)
-        console.log({
-            vehicleId: data.get('vehicleId'),
-            province: data.get('province')
+        
+        const data = ({
+            text: vehicleId,
+            province: province
         });
-    }
 
+        axios
+            .post('/smartparking/api/search/licenseplates', data)
+            .then((res) => {
+                console.log("response =",res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
-
+    
         return (
             <div id='search-root'>
                 <div className='hero-container'>
@@ -58,7 +66,7 @@ function SearchPage() {
                             >
                                 <option value="DEFAULT" disabled>เลือกจังหวัด</option>
                                 {provinceArray.map((object) => 
-                                <option key={object.numberID} value={object.province_TH}>{object.province_TH}</option>
+                                <option key={object.numberID} value={object.province_EN}>{object.province_TH}</option>
                                 )}
                             </select>
                         </div>

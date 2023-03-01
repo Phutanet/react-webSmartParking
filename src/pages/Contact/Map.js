@@ -5,44 +5,44 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
-import BuildingAPI from '../../jsons/buildings.json'
-
 
 function Map() {
-  const firstRender = useRef(true)
-  const center = { lat: 14.076691074357981, lng: 100.60166081310356 }
-  const ZOOM_LEVEL = 15
   const mapRef = useRef()
-
+  const firstRender = useRef(true)
+  const [dataResponse, setDataResponse] = useState([])
+  
   const myMarker = new L.Icon({
     iconUrl: require("./icons/nectec-icon-marker.jpg"),
     iconSize: [30,25],
   })
-
-  useEffect(() => {
-    if(firstRender.current) {
-      firstRender.current = false;
-
-      axios.get('/smartparking/api/info/building/all')
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    }
-  }, []);
 
   // const myMarker = L.divIcon({
   //   className:'custom-marker',
   //   html:`<img src='${process.env.PUBLIC_URL}/images/nectec-icon.jpg'/>`
   // });
 
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+
+      axios
+        .get("/smartparking/api/info/building/all")
+        .then((res) => {
+          setDataResponse(res.data['data']);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+  },[]);
+
+
   return (
     <MapContainer 
     style={{height:"600px", width:"90%"}}
-    center={center} 
-    zoom={ZOOM_LEVEL} 
+    //lat,lng
+    center={[14.076691074357981 , 100.60166081310356]} 
+    zoom={15} 
     // zoomControl={false}
     ref={mapRef}
     >
@@ -53,14 +53,14 @@ function Map() {
       &copy; OpenStreetMap contributors</a>'
       />
 
-      {BuildingAPI.map((building, index) => (
+      {dataResponse.map((building, index) => (
               <Marker
               position={[building.lat, building.lng]}
               icon={myMarker}
               key={index}
               >
                 <Popup>
-                  <b>{building.name}</b>
+                  <b>{building.buildingName}</b>
                 </Popup>
               </Marker>
       ))}

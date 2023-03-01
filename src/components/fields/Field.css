@@ -1,5 +1,4 @@
 .normal-field label {
-    
     font-weight: 700;
     font-size: 20px;
     display: block;
@@ -56,7 +55,7 @@ input:invalid[focused="true"]{
     border: 1px solid red;
 }
 
-input:invalid[focused="true"] ~ span {
+input:invalid[focused='true'] ~ span {
     display: block;
 }
 
@@ -97,9 +96,6 @@ input:invalid[focused="true"] ~ span {
 .duo-field label {
     font-weight: 700;
     font-size: 20px;
-    display: block;
-    float: left;
-    margin-bottom: 5px;
     line-height: 40px;
 }
 

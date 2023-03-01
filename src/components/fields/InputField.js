@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import './Field.css'
 
 function InputField(props) {
-  const [focused, setFocused] = useState(false);
+  const [focused, setFocused] = useState(false)
 
   const handleFocus = (e) => {
-    setFocused(true);
-  };
+    setFocused(true)
+  }
 
   return (
     <div className={props.className}>
@@ -18,9 +18,9 @@ function InputField(props) {
         onChange={props.onChange} 
         placeholder={props.placeholder} 
         disabled={props.disabled} 
-        required={props.required}
-
-        onBlur={handleFocus}
+        required={props.required} 
+        pattern={props.pattern} 
+        onBlur={handleFocus} 
         focused={focused.toString()}
         />
         

@@ -1,0 +1,22 @@
+#SHOWPARKING-root {
+    width: 100%;
+    min-height: 80vh;
+}
+
+#SHOWPARKING-banner {
+    background-color: gray;
+    position: relative;
+    min-height: 400px;
+}
+
+#SHOWPARKING-title h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#SHOWPARKING-table-container {
+    margin: 10px;
+}

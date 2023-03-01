@@ -1,52 +1,49 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "./Login.css";
 import ImageSlider from '../../components/slider/ImageSlider';
-import Swal from 'sweetalert2'
+import axios from "axios";
+import Swal from 'sweetalert2';
+import "./Login.css";
 
-
-async function loginUser(credentials) {
-    return await axios
-    .post ("/smartparking/auth/login", credentials)
-    .then(function (response) {
-        return (response['data'])
-    })
-    //สำหรับ Axios, ในกรณีที่ POST request ไม่ผ่าน(error) จะทำตาม condition ใน catch
-    .catch(err => {
-        Swal.fire({
-            title: 'เข้าสู่ระบบไม่สำเร็จ',
-            text: err.response['data'],
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 1500
-        })
-        console.log(err)
-    })
-}
 
 function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = async e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await loginUser ({
-            email,
-            password
-        });
 
-        if (response['accessToken'] != null) {
+        try {
+            const response = await axios.post("/smartparking/auth/login", 
+                JSON.stringify({ email:email, password:password }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
             Swal.fire({
                 title: 'เข้าสู่ระบบสำเร็จ',
                 icon: 'success',
                 showConfirmButton: false,
                 timer: 1500
             }).then(() => {
-                localStorage.setItem('accessToken', response['accessToken']);
+                const accessToken = response?.data?.accessToken;
+                localStorage.setItem('accessToken', accessToken);
+
+                const role = response?.data?.role;
+                localStorage.setItem('role', role);
+
                 window.location.href = '/INT/carpark-crud';
             })
+        } catch (err) {
+            Swal.fire({
+                title: 'เข้าสู่ระบบไม่สำเร็จ',
+                text: err?.response?.data,
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
-    };
+    }
 
 
     return (
@@ -68,6 +65,7 @@ function LoginPage() {
                             onChange={e => setEmail(e.target.value)}
                             value={email} 
                             placeholder="อีเมล / Email" 
+                            autoComplete="off"
                             />
                         </div>
                                 

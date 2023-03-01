@@ -1,110 +1,141 @@
-import React, { useState, useEffect, useRef } from "react"
-import axios from "axios"
-import DataTable from 'react-data-table-component'
-import './UserAccounts.css'
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import "./UserAccounts.css";
+import axios from "axios";
+import { useTable, useGlobalFilter, usePagination, useSortBy } from "react-table";
+import { format } from "date-fns";
+import { GlobalFilter } from "./GlobalFilter";
 
 
 function UserAccounts() {
-  const firstRender = useRef(true)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [error, setError] = useState(null)
-  const [usersArray, setUsersArray] = useState([])
-  const [searchText, setSearchText] = useState('')
+  const firstRender = useRef(true);
+  const [usersArray, setUsersArray] = useState([]);
+  const data = useMemo(() => [...usersArray], [usersArray]);
+
+  const handleDelete = (id) => {
+    const token = { accessToken: `${localStorage.getItem("accessToken")}` };
+    const postData = {user_id: id};
+    axios
+      .delete('/smartparking/profile/delete', {headers:token, data:postData})
+      .then(() => {
+        setUsersArray((prev) => prev.filter((user) => user._id !== id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const columns = useMemo(() => [
+    {
+      Header:'First name',
+      accessor:'firstname'
+    },
+    {
+      Header:'Email',
+      accessor:'email'
+    },
+    {
+      Header:'Role',
+      accessor:'role'
+    },
+    {
+      Header:'Registration',
+      accessor:'create_at',
+      Cell: ({ value }) => { return format(new Date(value), 'dd/MM/yyyy')}
+    },
+    {
+      Header:'Latest update',
+      accessor:'update_latest',
+      Cell: ({ value }) => { return format(new Date(value), 'dd/MM/yyyy')}
+    },
+    {
+      Header: "Delete",
+      accessor: "_id",
+      Cell: ({ value }) => (
+        <button onClick={() => handleDelete(value)}>Del</button>
+      ),
+    }
+  ], []);
 
   useEffect(() => {
-    if(firstRender.current){
+    if (firstRender.current) {
       firstRender.current = false;
 
-      const header = {
-        'accessToken': `${localStorage.getItem('accessToken')}`
-      }
+      const token = { accessToken: `${localStorage.getItem("accessToken")}` };
 
-      axios.get('/smartparking/profile/all', {headers: header})
-      .then(res => {
-        setUsersArray(res.data['data'])
-      })
-      //instead of a catch() block so that we don't swallow
-      .catch(err => {
-        console.log(err)
-      })
+      axios
+        .get("/smartparking/profile/all", { headers: token })
+        .then((res) => {
+          setUsersArray(res.data["data"]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, []);
 
+  //ลำดับของ arguments {useTable, useGlobalFilter, useSortBy, usePagination}
+  const tableInstance = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination);
+  const { 
+    getTableProps, 
+    getTableBodyProps, 
+    headerGroups, 
+    page, 
+    nextPage, 
+    previousPage, 
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+    prepareRow, 
+    state, 
+    setGlobalFilter
+   } = tableInstance;
 
-  const columns = [
-    {
-      name: 'Name',
-      selector: row => row.firstname,
-      sortable: true,
-    },
-    {
-      name: 'Email',
-      selector: row => row.email,
-      sortable: true,
-    },
-    {
-      name: 'Role',
-      selector: row => row.role,
-      sortable: true,
-    },
-    {
-      name: 'Create date',
-      selector: row => row.create_at,
-      sortable: true,
-    },
-    {
-      name: 'Latest update',
-      selector: row => row.update_latest,
-      sortable: true,
-    },
-    {
-      name: 'Delete account',
-      cell: row => 
-      <div id="delete-account-container">
-      <button id="delete-account-btn" onClick={() => handleDelete(row)}>
-        <i className="fa-solid fa-trash"></i>
-      </button>
-      </div>
-    }
-  ];
+  const { globalFilter } = state
+  const { pageIndex } = state
 
 
-  const filteredUsersArray = usersArray.filter((user) => {
-    return user.email.toLowerCase().includes(searchText.toLowerCase());
-  });
 
-  const handleSearch = (event) => {
-    setSearchText(event.target.value);
-  }
+  return (
+    <>
+    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map((headerGroup, index) => (
+          <tr key={index} {...headerGroup.getHeaderGroupProps}>
+            {headerGroup.headers.map((column, index) => (
+              <th key={index} {...column.getHeaderProps(column.getSortByToggleProps)}>
+                {column.render('Header')}
+                <span>
+                  {column.isSorted ? (column.isSortedDesc ? '▼' : '▲') : ''}
+                </span>
+              </th>
+            ))}
+          </tr> 
+        ))}
 
-  const handleDelete = (row) => {
-    console.log(row);
-  }
-
-  
-    return (
-    <div className="root">
-      <div id="accounts-container-section-1">
-
-        <div className="table-header-container">
-          <h2>รายการบัญชีผู้ใช้</h2>
-        </div>
-
-        <div id="search-field-container">
-          <label>ค้นหา</label>
-          <input type="text" placeholder="กรุณากรอกอีเมล" value={searchText} onChange={handleSearch} />
-        </div>
-
-        <div className="table-body-container">
-          <DataTable 
-          columns={columns}
-          data={filteredUsersArray}
-          pagination
-          />
-        </div>
-      </div>
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {page.map((row) => {
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map((cell, index) => {
+                return <td key={index} {...cell.getCellProps()}>{cell.render('Cell')}</td>
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+    <div>
+      <span>
+        Page {pageIndex + 1} of {pageOptions.length}{' '}
+      </span>
+      <button onClick={() => previousPage()} disabled={!canPreviousPage}>prev</button>
+      <button onClick={() => nextPage()} disabled={!canNextPage}>next</button>
     </div>
-    )
+    </>
+  );
 }
 
-export default UserAccounts
+export default UserAccounts;

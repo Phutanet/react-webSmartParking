@@ -13,6 +13,8 @@ function NavbarInternal() {
 
     const handleLogout = () => {
         localStorage.removeItem("accessToken")
+        localStorage.removeItem("role")
+        localStorage.removeItem("email")
         window.location.href = "/EXT/login"
     };
 
@@ -105,7 +107,7 @@ function NavbarInternal() {
 
                     <li className="nav-item">
                         <NavLink 
-                            to='/INT/logout'
+                            to='/EXT/login'
                             className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
                             onClick={() => {closeMobileMenu(); handleLogout();}}
                         >
