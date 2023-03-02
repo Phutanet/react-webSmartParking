@@ -24,7 +24,6 @@ const CheckStatusSystem = () => {
       };
       
       const validateStatus = (status) => {
-        console.log("status =",status);
 
         //กรณีที่สถานะระบบปิด และไม่มีตำแหน่ง
         if (status === false && role === null) {

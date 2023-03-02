@@ -40,3 +40,8 @@
 .button-container .cancel-btn:hover {
     background: #bd0026;
 }
+
+.button-container .disabled-btn {
+    cursor: not-allowed;
+    background: #e7e7e7;
+}

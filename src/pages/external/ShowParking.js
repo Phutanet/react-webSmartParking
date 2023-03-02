@@ -27,20 +27,20 @@ function ShowParking() {
         cell: { value } 
       }) => {
         let availableSlots = value;
-        if (availableSlots <= 0) {
-          availableSlots = "เต็ม";
-        } else if (availableSlots > totalSlot) {
-          availableSlots = totalSlot;
-        }
-        
         let backgroundColor;
-        if (availableSlots <= 0) {
+
+        if (availableSlots > totalSlot) {
+          availableSlots = totalSlot;
+          backgroundColor = 'rgb(153, 255, 153)';
+        } else if (availableSlots <= 0) {
+          availableSlots = "เต็ม";
           backgroundColor = 'rgb(255, 153, 153)';
         } else if (availableSlots <= 5) {
           backgroundColor = 'rgb(255, 204, 153)';
         } else {
           backgroundColor = 'rgb(153, 255, 153)';
-        }
+        };
+
         return <div style={{ backgroundColor }}>{availableSlots}</div>;
       }
     }

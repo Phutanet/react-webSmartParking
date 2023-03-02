@@ -142,9 +142,9 @@ function Register() {
                 value={firstName} 
                 onChange={e => setFirstName(e.target.value)} 
                 placeholder="First Name" 
-                errMessage="Name must not contain numbers or special characters." 
+                errMessage="Name must be at least 1 characters long." 
                 required={true} 
-                pattern="^[a-zA-Z]+$"
+                pattern="^.{1,}$"
                 />
 
                 <InputField 
@@ -155,9 +155,9 @@ function Register() {
                 value={lastName} 
                 onChange={e => setLastName(e.target.value)} 
                 placeholder="Last Name" 
-                errMessage="Surname must not contain numbers or special characters." 
+                errMessage="Surname must be at least 1 characters long." 
                 required={true} 
-                pattern="^[a-zA-Z]+$"
+                pattern="^.{1,}$"
                 />
 
                 <InputField 
