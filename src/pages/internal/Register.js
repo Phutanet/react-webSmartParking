@@ -78,8 +78,7 @@ function Register() {
         title: 'ลงทะเบียนไม่สำเร็จ',
         text: err.response['data']['msg'],
         icon: 'error',
-        showConfirmButton: false,
-        timer: 2000
+        showConfirmButton: true
       })
       console.log(err)
     })

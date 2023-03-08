@@ -223,9 +223,5 @@ Select Section
 ------------------------------------ */
 
 #search-section2 {
-    height: 100vh;
-    background-color: pink;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 80vh;
 }

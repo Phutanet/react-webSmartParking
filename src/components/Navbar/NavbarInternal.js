@@ -43,7 +43,7 @@ function NavbarInternal() {
 
                     <li className="nav-item">
                         <NavLink 
-                            to='/INT/cctv'
+                            to='/INT/places-for-device'
                             className={({ isActive }) => "nav-links" + (isActive ? " activated" : "")}
                             onClick={closeMobileMenu}
                         >

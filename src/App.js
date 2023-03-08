@@ -12,7 +12,9 @@ import Login from './pages/external/Login'
 
 import NavbarInternal from './components/navbar/NavbarInternal'
 import BuildingCRUD from './pages/internal/BuildingCRUD'
-import CCTV from './pages/internal/CCTV'
+import PlacesForDevice from './pages/internal/PlacesForDevice'
+import Devices from './pages/internal/Devices'
+import DeviceInformation from './pages/internal/DeviceInformation'
 import MessageDealing from './pages/internal/MessageDealing'
 import UserAccounts from './pages/internal/UserAccounts'
 import Register from './pages/internal/Register'
@@ -23,6 +25,7 @@ import Footer from './components/footer/Footer'
 
 import CheckStatusSystem from './CheckStatusSystem'
 import NotFound from './pages/external/NotFound'
+
 
 
 
@@ -48,7 +51,9 @@ function App() {
       {/* we want to protect these routes */}
       <Route element={<AuthProtectedComponent />}>
         <Route path='/INT/carpark-crud' element={<BuildingCRUD />} />
-        <Route path='/INT/cctv' element={<CCTV />} />
+        <Route path='/INT/places-for-device' element={<PlacesForDevice />} />
+        <Route path='/INT/devices' element={<Devices />} />
+        <Route path='/INT/device-information' element={<DeviceInformation />} />
         <Route path='/INT/message-dealing' element={<MessageDealing />} />
         <Route path='/INT/user-accounts' element={<UserAccounts />} />
         <Route path='/INT/register' element={<Register />} />

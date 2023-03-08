@@ -68,6 +68,11 @@
 	border: none;
 	font-size: 30px;
 	cursor: pointer;
+	opacity: 0;
+}
+
+.card-item:hover button {
+	opacity: 1;
 }
 
 .action-btn-container i {

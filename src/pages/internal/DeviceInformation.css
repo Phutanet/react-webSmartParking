@@ -1,0 +1,12 @@
+#DEVICEINFO-root {
+    width: 100%;
+    min-height: 80vh;
+}
+
+#DEVICCEINFO-title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

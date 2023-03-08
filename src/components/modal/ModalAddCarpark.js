@@ -65,8 +65,7 @@ function AddParking({setOpenModal, setPlace}) {
       Swal.fire({
         title: 'ล้มเหลว',
         text: err,
-        showConfirmButton: false,
-        timer: 2000
+        showConfirmButton: true,
       });
     });
 
