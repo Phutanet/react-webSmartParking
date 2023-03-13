@@ -1,4 +1,5 @@
 #contact-root {
+    padding-top: 70px;
     overflow: hidden;
     width: 100%;
 }
@@ -39,7 +40,6 @@ section3 style
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 
 }
 

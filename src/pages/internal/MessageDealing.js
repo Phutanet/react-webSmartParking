@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useTable, useGlobalFilter, usePagination } from "react-table";
 import { GlobalFilter } from './GlobalFilter';
 import Swal from 'sweetalert2';
+import './MessageDealing.css'
 
 function MessageDealing() {
   const firstRender = useRef(true);
@@ -126,40 +127,40 @@ function MessageDealing() {
 
 
   return (
-    <>
-    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-        <tr {...headerGroup.getHeaderGroupProps()}>
-          {headerGroup.headers.map((column, index) => (
-            <th key={index} {...column.getHeaderProps()}>{column.render('Header')}</th>
+    <div id='CONTACTMSG-root'>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map((column, index) => (
+              <th key={index} {...column.getHeaderProps()}>{column.render('Header')}</th>
+            ))}
+          </tr>
           ))}
-        </tr>
-        ))}
-      </thead>
+        </thead>
 
-      <tbody {...getTableBodyProps()}>
-        {page.map((row) => {
-          prepareRow(row)
-          return(
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell, index) => {
-                return <td key={index} {...cell.getCellProps()}>{cell.render('Cell')}</td>
-              })}
-            </tr>
-          )
-        })}
-      </tbody>
-    </table>
-    <div>
-      <span>
-        Page {pageIndex + 1} of {pageOptions.length}{' '}
-      </span>
-      <button onClick={() => previousPage()} disabled={!canPreviousPage}>prev</button>
-      <button onClick={() => nextPage()} disabled={!canNextPage}>next</button>
+        <tbody {...getTableBodyProps()}>
+          {page.map((row) => {
+            prepareRow(row)
+            return(
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell, index) => {
+                  return <td key={index} {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+      <div>
+        <span>
+          Page {pageIndex + 1} of {pageOptions.length}{' '}
+        </span>
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>prev</button>
+        <button onClick={() => nextPage()} disabled={!canNextPage}>next</button>
+      </div>
     </div>
-    </>
   );
 };
 

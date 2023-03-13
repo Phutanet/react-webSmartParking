@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
+import './Profile.css'
 
 function Profile() {
   const firstRender = useRef(true)
@@ -56,7 +57,7 @@ function Profile() {
   }, [dataResponse]);
 
   return (
-    <div>
+    <div id='PROFILE-root'>
       <h1>User Profile</h1>
       <p>First name: {firstName}</p>
       <p>Last name: {lastName}</p>

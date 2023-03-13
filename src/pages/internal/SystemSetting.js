@@ -53,33 +53,35 @@ function SystemSetting() {
   };
 
   return (
-    <div className="system-setting-container">
-      <form onSubmit={handleFormSubmit}>
-        {configList.map((entry,index) => (
-          <div key={index}>
-            <label>{entry.name}</label>
-            <label>
-              <input 
-              type="radio" 
-              name="status" 
-              value={false} 
-              onChange={() => handleChange(entry.name, false, entry.msg)} 
-              />
-              ปิดระบบ
-            </label>
-            <label>
-              <input 
-              type="radio" 
-              name="status" 
-              value={true} 
-              onChange={() => handleChange(entry.name, true, entry.msg)} 
-              />
-              เปิดระบบ
-            </label>
-            <button type="submit">Submit</button>
-          </div>
-        ))}
-      </form>
+    <div id='SYSMANAGE-root'>
+      <div className="system-setting-container">
+        <form onSubmit={handleFormSubmit}>
+          {configList.map((entry,index) => (
+            <div key={index}>
+              <label>{entry.name}</label>
+              <label>
+                <input 
+                type="radio" 
+                name="status" 
+                value={false} 
+                onChange={() => handleChange(entry.name, false, entry.msg)} 
+                />
+                ปิดระบบ
+              </label>
+              <label>
+                <input 
+                type="radio" 
+                name="status" 
+                value={true} 
+                onChange={() => handleChange(entry.name, true, entry.msg)} 
+                />
+                เปิดระบบ
+              </label>
+              <button type="submit">Submit</button>
+            </div>
+          ))}
+        </form>
+      </div>
     </div>
   );
 };

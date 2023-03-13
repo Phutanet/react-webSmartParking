@@ -78,6 +78,7 @@ function ShowParking() {
     <div id='SHOWPARKING-root'>
       <div id='SHOWPARKING-banner'>
         <PrevPageButton />
+        <img src={buildingInfo.image ? buildingInfo.image : "/images/image-parking-banner-dummy.jpg"} alt={buildingInfo.buildingName} />
       </div>
 
       <div id='SHOWPARKING-title'>

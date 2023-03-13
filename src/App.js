@@ -3,14 +3,12 @@ import './App.css'
 
 import AuthProtectedComponent from './AuthProtectedComponent'
 
-import NavbarExternal from './components/navbar/NavbarExternal'
 import ShowBuildingExternal from './pages/external/ShowBuildingExternal'
 import ShowParking from './pages/external/ShowParking'
 import SearchCar from './pages/external/SearchCar'
 import Contact from './pages/Contact/ContactPage'
 import Login from './pages/external/Login'
 
-import NavbarInternal from './components/navbar/NavbarInternal'
 import BuildingCRUD from './pages/internal/BuildingCRUD'
 import PlacesForDevice from './pages/internal/PlacesForDevice'
 import Devices from './pages/internal/Devices'
@@ -25,8 +23,8 @@ import Footer from './components/footer/Footer'
 
 import CheckStatusSystem from './CheckStatusSystem'
 import NotFound from './pages/external/NotFound'
-
-
+import NavigationBarExternal from './components/navbar/NavigationBarExternal'
+import NavigationBarInternal from './components/navbar/NavigationBarInternal'
 
 
 function App() {
@@ -34,7 +32,7 @@ function App() {
   
   return (
     <>
-    {accessToken? (<NavbarInternal />) : (<NavbarExternal />)}
+    {accessToken? (<NavigationBarInternal />) : (<NavigationBarExternal />)}
 
     <Routes>
       {/* public routes */}

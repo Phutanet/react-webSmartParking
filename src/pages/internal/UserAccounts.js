@@ -168,48 +168,48 @@ function UserAccounts() {
 
 
   return (
-    <>
-    {modalOpen && <ModalEditUserInformation setOpenModal={setModalOpen} userId={selectedUserId} updateCredentials={updateCredentials}/> }
-    {modalEditPass && <ModalEditUserPassword setOpenModal={setModalEditPass} userId={selectedUserId}/> }
+    <div id='USERACOUNTS-root'>
+      {modalOpen && <ModalEditUserInformation setOpenModal={setModalOpen} userId={selectedUserId} updateCredentials={updateCredentials}/> }
+      {modalEditPass && <ModalEditUserPassword setOpenModal={setModalEditPass} userId={selectedUserId}/> }
 
-    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup, index) => (
-          <tr key={index} {...headerGroup.getHeaderGroupProps}>
-            {headerGroup.headers.map((column, index) => (
-              <th key={index} {...column.getHeaderProps(column.getSortByToggleProps)}>
-                {column.render('Header')}
-                <span>
-                  {column.isSorted ? (column.isSortedDesc ? '▼' : '▲') : ''}
-                </span>
-              </th>
-            ))}
-          </tr> 
-        ))}
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup, index) => (
+            <tr key={index} {...headerGroup.getHeaderGroupProps}>
+              {headerGroup.headers.map((column, index) => (
+                <th key={index} {...column.getHeaderProps(column.getSortByToggleProps)}>
+                  {column.render('Header')}
+                  <span>
+                    {column.isSorted ? (column.isSortedDesc ? '▼' : '▲') : ''}
+                  </span>
+                </th>
+              ))}
+            </tr> 
+          ))}
 
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {page.map((row) => {
-          prepareRow(row)
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell, index) => {
-                return <td key={index} {...cell.getCellProps()}>{cell.render('Cell')}</td>
-              })}
-            </tr>
-          )
-        })}
-      </tbody>
-    </table>
-    <div>
-      <span>
-        Page {pageIndex + 1} of {pageOptions.length}{' '}
-      </span>
-      <button onClick={() => previousPage()} disabled={!canPreviousPage}>prev</button>
-      <button onClick={() => nextPage()} disabled={!canNextPage}>next</button>
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {page.map((row) => {
+            prepareRow(row)
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell, index) => {
+                  return <td key={index} {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+      <div>
+        <span>
+          Page {pageIndex + 1} of {pageOptions.length}{' '}
+        </span>
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>prev</button>
+        <button onClick={() => nextPage()} disabled={!canNextPage}>next</button>
+      </div>
     </div>
-    </>
   );
 }
 

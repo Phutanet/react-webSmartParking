@@ -91,7 +91,7 @@ function Devices() {
                                             <i className="fa-solid fa-square-xmark"></i>
                                         </button>
                                     </div>
-                                    <img src={device.image} alt="" />
+                                    <img src={device.image ? device.image : "/images/image-default.png"} alt={device.deviceName} />
                                     <div className="card-title">{device.deviceName}</div>
                                 </div>
                             </div>

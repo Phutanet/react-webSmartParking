@@ -69,14 +69,12 @@ function BuildingCRUD() {
               <i className="fa-solid fa-square-xmark"></i>
             </button>
           </div>
-          <img src={place.image} alt="" />
+          <img src={place.image ? place.image : "/images/image-default.png"} alt={place.buildingName} />
           <div className="card-title">{place.buildingName}</div>
         </div>
       </div>
     ));
   }, [placeList, handleClick, handleDelete]);
-
-
 
 
   return (

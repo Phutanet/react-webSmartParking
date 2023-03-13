@@ -85,7 +85,7 @@ function Register() {
   };
 
   return(
-    <div className='root'>
+    <div id='REGISTER-root'>
       <div id='register-container-section-1'>
         <div className='form-container'>
           <div className='form-container-header'>

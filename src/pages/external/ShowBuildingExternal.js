@@ -40,7 +40,7 @@ function ShowBuildingExternal() {
         return(
         <div key={object.buildingID} className="card-item" onClick={() => {handleClick(object.buildingID)}}>
           <div className="inner-card-parking">
-            <img src={object.image} alt="" />
+            <img src={object.image ? object.image : "/images/image-default.png"} alt={object.buildingName} />
             <div className="card-title">{object.buildingName}</div>
           </div>
         </div>
