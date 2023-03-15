@@ -1,5 +1,4 @@
 #login-root {
-    padding-top: 70px;
     background-color: #fff;
     width: 100%;
     min-height: 100vh;
@@ -97,4 +96,13 @@
 
 .login-button:hover {
     background-color: rgb(42, 185, 112);
+}
+
+
+/* ------------------------NEW STYLE------------------------ */
+
+#img-slide-layout {
+    background-color: aquamarine;
+    width: 70%;
+    height: 100%;
 }

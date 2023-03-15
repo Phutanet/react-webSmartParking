@@ -8,7 +8,7 @@
 }
 
 .normal-field input {
-    
+
     width: 100%;
     max-height: 45px;
     height: 100%;
@@ -51,11 +51,11 @@
     display: none;
 }
 
-input:invalid[focused="true"]{
+input:invalid[focused="true"] {
     border: 1px solid red;
 }
 
-input:invalid[focused='true'] ~ span {
+input:invalid[focused='true']~span {
     display: block;
 }
 

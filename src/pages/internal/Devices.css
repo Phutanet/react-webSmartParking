@@ -1,5 +1,4 @@
 #DEVICES-root {
-    padding-top: 70px;
     width: 100%;
     min-height: 80vh;
 }
@@ -16,7 +15,7 @@
     margin: 5px;
     display: inline-block;
     border-radius: 4px;
-	background: linear-gradient(132deg, rgb(224, 235, 213) 0.00%, rgb(37, 148, 141) 100.00%);
+    background: linear-gradient(132deg, rgb(224, 235, 213) 0.00%, rgb(37, 148, 141) 100.00%);
     border: none;
     color: #fff;
     text-align: center;
@@ -70,4 +69,3 @@
     flex-wrap: wrap;
     display: flex;
 }
-

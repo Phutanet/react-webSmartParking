@@ -1,14 +1,55 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@100;300;400;700&display=swap');
+
+* {
   margin: 0;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Serif Thai', serif;
+}
+
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+::-webkit-scrollbar {
+  width: 0.6em;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 100vw;
+
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #f2f2f2;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b2b2b2;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666666;
+}
+
+.page-component-layout {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
