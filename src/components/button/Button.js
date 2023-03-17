@@ -5,6 +5,7 @@ function Button(props) {
   return (
     <div className='button-container'>
         <button 
+        type={props.type}
           className={props.className} 
           onClick={props.onClick} 
           disabled={props.disabled}
