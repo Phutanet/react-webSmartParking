@@ -1,0 +1,6 @@
+/* Override divIcon default style */
+.leaflet-div-icon {
+    background: transparent;
+    border: none;
+    color: #f96d00;
+}

@@ -51,14 +51,6 @@
     display: none;
 }
 
-input:invalid[focused="true"] {
-    border: 1px solid red;
-}
-
-input:invalid[focused='true']~span {
-    display: block;
-}
-
 /* ----------------Style for Disable field---------------- */
 .disable-field label {
     font-weight: 700;
@@ -113,4 +105,66 @@ input:invalid[focused='true']~span {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 25px;
+}
+
+/* --------------------------------------------------
+--------------------------------------------------
+FIELD OF CONTACT FORM
+--------------------------------------------------
+-------------------------------------------------- */
+
+.contact-field {
+    margin-bottom: 2em;
+}
+
+.contact-field label {
+    display: block;
+    color: #222831;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.2em;
+}
+
+.contact-field input {
+    width: 100%;
+    height: 45px;
+    padding-left: 1em;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.contact-field input::placeholder {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.contact-field span {
+    font-size: 0.75rem;
+    padding: 3px;
+    color: red;
+    float: left;
+    display: none;
+}
+
+@media (max-width: 340px) {
+    .contact-field label {
+        font-size: 1rem;
+    }
+}
+
+
+/* --------------------------------------------------
+--------------------------------------------------
+SPAN ERROR MESSAGE ANIMATION
+--------------------------------------------------
+-------------------------------------------------- */
+
+input:invalid[focused="true"] {
+    border: 1px solid red;
+}
+
+input:invalid[focused='true']~span {
+    display: block;
 }

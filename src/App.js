@@ -3,13 +3,20 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 import AuthProtectedComponent from './AuthProtectedComponent'
+import CheckStatusSystem from './CheckStatusSystem'
+import NotFound from './pages/external/NotFound'
+import NavigationBarExternal from './components/navbar/NavigationBarExternal'
+import NavigationBarInternal from './components/navbar/NavigationBarInternal'
+import Footer from './components/footer/Footer'
 
+// EXTERNAL COMPONENTS
 import ShowBuildingExternal from './pages/external/ShowBuildingExternal'
 import ShowParking from './pages/external/ShowParking'
 import SearchCar from './pages/external/SearchCar'
-import Contact from './pages/Contact/ContactPage'
+import Contact from "./pages/external/Contact"
 import Login from './pages/external/Login'
 
+// INTERNAL COMPONENTS
 import BuildingCRUD from './pages/internal/BuildingCRUD'
 import PlacesForDevice from './pages/internal/PlacesForDevice'
 import Devices from './pages/internal/Devices'
@@ -20,11 +27,6 @@ import Register from './pages/internal/Register'
 import SystemSetting from './pages/internal/SystemSetting'
 import Profile from './pages/internal/Profile'
 
-import CheckStatusSystem from './CheckStatusSystem'
-import NotFound from './pages/external/NotFound'
-import NavigationBarExternal from './components/navbar/NavigationBarExternal'
-import NavigationBarInternal from './components/navbar/NavigationBarInternal'
-import Footer from './components/footer/Footer'
 
 
 function App() {

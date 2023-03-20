@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
+import Button2 from "../../components/button/Button2";
 import ImageSlider from '../../components/slider/ImageSlider';
 import axios from "axios";
 import Swal from 'sweetalert2';
@@ -79,13 +80,12 @@ function LoginPage() {
                                     name="password"
                                     onChange={e => setPassword(e.target.value)} 
                                     value={password} 
-                                    placeholder="รหัสผ่าน / Password" 
+                                    placeholder="รหัสผ่าน / password" 
                                 />
                             </div>
 
-                            <div className="btn-container">
-                                <button className="login-btn" type="submit">เข้าสู่ระบบ</button>
-                            </div>
+                            <Button2 className="id-btn" type="submit" label="เข้าสู่ระบบ"/>
+                            
                         </form>
                     </div>
                 </div>
