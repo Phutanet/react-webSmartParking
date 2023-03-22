@@ -1,0 +1,39 @@
+#filter-field {
+    position: relative;
+    max-width: 220px;
+    width: 100%;
+}
+
+#filter-field input {
+    width: 100%;
+    height: 30px;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 1em;
+    padding-right: 2em;
+    border-radius: 9999em;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+#filter-field input:placeholder-shown {
+    text-align: center;
+}
+
+#filter-field i {
+    color: #222831;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#filter-field i:hover {
+    color: #f96d00;
+}
+
+
+  

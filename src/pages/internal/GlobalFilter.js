@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import './GlobalFilter.css';
 
 export const GlobalFilter = ({ filter, setFilter }) => {
   return (
-    <span>
-        ค้นหา:{' '}
-        <input value={filter || ''} onChange={(e) => setFilter(e.target.value)} placeholder='กรุณาใส่คำค้นหา'/>
-    </span>
-  )
-}
+    <div id='filter-field'>
+      <i className="fa-solid fa-magnifying-glass"></i>
+      <input value={filter || ''} onChange={(e) => setFilter(e.target.value)} placeholder='กรุณาใส่คำค้นหา'/>
+    </div>
+  );
+};

@@ -213,6 +213,12 @@ nav .navbar .hamburger-icon:hover {
     }
 }
 
+@media (max-width:470px) {
+    nav .navbar .nav-logo-container .nav-logo-text {
+        font-size: 1.2rem;
+    }
+}
+
 @media (max-width:370px) {
     nav .navbar .nav-menu-container {
         max-width: 100%;

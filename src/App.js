@@ -12,7 +12,7 @@ import Footer from './components/footer/Footer'
 // EXTERNAL COMPONENTS
 import ShowBuildingExternal from './pages/external/ShowBuildingExternal'
 import ShowParking from './pages/external/ShowParking'
-import SearchCar from './pages/external/SearchCar'
+import SearchCar from "./pages/external/SearchCar";
 import Contact from "./pages/external/Contact"
 import Login from './pages/external/Login'
 
