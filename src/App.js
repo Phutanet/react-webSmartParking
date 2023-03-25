@@ -21,10 +21,10 @@ import BuildingCRUD from './pages/internal/BuildingCRUD'
 import PlacesForDevice from './pages/internal/PlacesForDevice'
 import Devices from './pages/internal/Devices'
 import DeviceInformation from './pages/internal/DeviceInformation'
-import MessageDealing from './pages/internal/MessageDealing'
+import MessageDealing from "./pages/internal/MessageDealing";
 import UserAccounts from './pages/internal/UserAccounts'
 import Register from './pages/internal/Register'
-import SystemSetting from './pages/internal/SystemSetting'
+import SystemSetting from "./pages/internal/SystemSetting"
 import Profile from './pages/internal/Profile'
 
 
