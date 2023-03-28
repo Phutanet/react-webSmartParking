@@ -4,7 +4,7 @@ import './App.css'
 
 import AuthProtectedComponent from './AuthProtectedComponent'
 import CheckStatusSystem from './CheckStatusSystem'
-import NotFound from './pages/external/NotFound'
+import SystemClosing from "./pages/external/SystemClosing"
 import NavigationBarExternal from './components/navbar/NavigationBarExternal'
 import NavigationBarInternal from './components/navbar/NavigationBarInternal'
 import Footer from './components/footer/Footer'
@@ -22,8 +22,8 @@ import PlacesForDevice from './pages/internal/PlacesForDevice'
 import Devices from './pages/internal/Devices'
 import DeviceInformation from './pages/internal/DeviceInformation'
 import MessageDealing from "./pages/internal/MessageDealing";
-import UserAccounts from './pages/internal/UserAccounts'
-import Register from './pages/internal/Register'
+import UserAccounts from "./pages/internal/UserAccounts"
+import Register from "./pages/internal/Register"
 import SystemSetting from "./pages/internal/SystemSetting"
 import Profile from './pages/internal/Profile'
 
@@ -39,7 +39,7 @@ function App() {
     <Routes>
       {/* public routes */}
       <Route path='/EXT/login' element={<Login />} />
-      <Route path='/404/PageNotFound' element={<NotFound />} />
+      <Route path='/404/PageNotFound' element={<SystemClosing />} />
 
       <Route element={<CheckStatusSystem />}>
         <Route path='/' element={<ShowBuildingExternal />} />

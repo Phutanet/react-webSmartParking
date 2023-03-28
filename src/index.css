@@ -54,17 +54,47 @@ img {
   max-width: 100%;
 }
 
-.td-delete-btn {
+/* --------------------------------------------------
+--------------------------------------------------
+Actions Button Group in Table
+--------------------------------------------------
+-------------------------------------------------- */
+
+.action-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.td-delete-btn,
+.td-edit-info-btn,
+.td-edit-pass-btn {
   background: transparent;
   border: none;
   outline: none;
+  font-size: 1.5rem;
 }
 
 .td-delete-btn i {
   color: #a80038;
-  font-size: 1.5rem;
 }
 
 .td-delete-btn i:hover {
   color: #fd0054;
+}
+
+.td-edit-info-btn i {
+  color: #0b00a8;
+}
+
+.td-edit-info-btn i:hover {
+  color: #0d00fd;
+}
+
+.td-edit-pass-btn i {
+  color: #a8a500;
+}
+
+.td-edit-pass-btn i:hover {
+  color: #fdfd00;
 }

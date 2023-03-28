@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BuildingCRUD.css';
-import ModalAddCarpark from '../../components/modal/ModalAddCarpark';
+import ModalAddParking from '../../components/modal/ModalAddParking';
 import axios from 'axios';
 
 function BuildingCRUD() {
@@ -79,7 +79,7 @@ function BuildingCRUD() {
 
   return (
     <div className='CARPARKCRUD-root'>
-      {modalOpen && <ModalAddCarpark setOpenModal={setModalOpen} setPlace={addNewPlace} />}
+      {modalOpen && <ModalAddParking setOpenModal={setModalOpen} setPlace={addNewPlace} />}
       <div className='CARPARKCRUD-title'>
         <h1>
           กรุณาเลือกสถานที่จอดรถ

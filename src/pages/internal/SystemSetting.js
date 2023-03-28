@@ -34,6 +34,7 @@ function SystemSetting() {
             status: status,
             msg: announceMsg
         });
+        // msg must not equal to null API required
         if (announceMsg === "" || announceMsg === null) {
             Swal.fire({
                 title: 'ตั้งค่าไม่สำเร็จ',
@@ -49,7 +50,8 @@ function SystemSetting() {
                         title: 'ตั้งค่าสำเร็จ',
                         text: res.data.msg,
                         icon: 'success',
-                        showConfirmButton: true
+                        showConfirmButton: false,
+                        timer: 1500
                     })
                 })
                 .catch((err) => {

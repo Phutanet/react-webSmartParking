@@ -1,0 +1,136 @@
+#modal-popup-background {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modal-popup-background .modal-container {
+    max-width: 700px;
+    width: 100%;
+    height: 600px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    margin: 1em 1em;
+    padding: 1em;
+}
+
+#modal-popup-background .modal-container .modal-close-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#modal-popup-background .modal-container .modal-close-btn button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#modal-popup-background .modal-container .modal-close-btn button i {
+    font-size: 1.875rem;
+    color: #a80038;
+}
+
+#modal-popup-background .modal-container .modal-close-btn button i:hover {
+    color: #fd0054;
+}
+
+#modal-popup-background .modal-container .modal-header {
+    margin-bottom: 1.25em;
+    text-align: center;
+}
+
+#modal-popup-background .modal-container .modal-header h2 {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+#modal-popup-background .modal-container .modal-body {
+    width: 100%;
+    max-height: calc(79% - 1.25em);
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-bottom: 1.25em;
+    padding: 0.5em;
+}
+
+#modal-popup-background .modal-container .modal-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1em;
+}
+
+#modal-popup-background .modal-container .modal-footer #cancel-btn,
+#modal-popup-background .modal-container .modal-footer #submit-btn,
+#modal-popup-background .modal-container .modal-footer #disabled-btn {
+    width: 20%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f2f2f2;
+    text-align: center;
+    background-color: initial;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    pointer-events: auto;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    z-index: 9;
+    overflow: hidden;
+}
+
+#modal-popup-background .modal-container .modal-footer #cancel-btn {
+    background-image: linear-gradient(-180deg, #d70032, #bd0026);
+}
+
+#modal-popup-background .modal-container .modal-footer #cancel-btn:hover {
+    background: #bd0026;
+}
+
+#modal-popup-background .modal-container .modal-footer #submit-btn {
+    background-image: linear-gradient(-180deg, #00D775, #00BD68);
+}
+
+#modal-popup-background .modal-container .modal-footer #submit-btn:hover {
+    background: #00bd68;
+}
+
+#modal-popup-background .modal-container .modal-footer #disabled-btn {
+    background: #e7e7e7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 550px) {
+    #modal-popup-background .modal-container .modal-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #modal-popup-background .modal-container .modal-footer #cancel-btn,
+    #modal-popup-background .modal-container .modal-footer #submit-btn,
+    #modal-popup-background .modal-container .modal-footer #disabled-btn {
+        width: 100%;
+        margin: 0.5em;
+    }
+}

@@ -1,118 +1,55 @@
-.normal-field label {
-    font-weight: 700;
-    font-size: 20px;
+/* --------------------------------------------------
+--------------------------------------------------
+CASUAL STYLE
+--------------------------------------------------
+-------------------------------------------------- */
+.casual-field {
+    margin-bottom: 1em;
+}
+
+.casual-field label {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 600;
     display: block;
-    float: left;
-    margin-top: 20px;
-    margin-bottom: 5px;
 }
 
-.normal-field input {
-
+.casual-field input,
+.casual-field select {
     width: 100%;
     max-height: 45px;
     height: 100%;
     outline: none;
-    border-radius: 5px;
-    border: 1px solid gray;
-    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
     padding: 10px;
-
 }
 
-.normal-field input::placeholder {
-    font-size: 16px;
-    font-weight: 500;
+.casual-field input:placeholder-shown {
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
     text-align: center;
 }
 
-.normal-field select {
-    width: 100%;
-    max-height: 45px;
-    height: 100%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid gray;
-    font-size: 16px;
-    margin-bottom: 25px;
-}
-
-.normal-field select option {
-    font-size: 16px;
-    font-weight: 500;
+.casual-field select option {
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
     text-align: center;
 }
 
-.normal-field span {
-    font-size: 12px;
-    padding: 3px;
+.casual-field span {
+    font-size: 0.75rem;
     color: red;
-    float: left;
     display: none;
 }
 
-/* ----------------Style for Disable field---------------- */
-.disable-field label {
-    font-weight: 700;
-    font-size: 20px;
-    display: block;
-    float: left;
-    margin-bottom: 5px;
-}
 
-.disable-field input {
-    background-color: #ccc;
-    width: 100%;
-    max-height: 45px;
-    height: 100%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid gray;
-    font-size: 16px;
-    padding: 10px;
-    margin-bottom: 25px;
-}
 
-.disable-field input::placeholder {
-    font-size: 16px;
-    font-weight: 500;
-    text-align: center;
-}
 
-/* ----------------Style for Duo field---------------- */
-.duo-field {
-    display: flex;
-    justify-content: center;
-}
-
-.duo-field label {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 40px;
-}
-
-.duo-field input {
-    background-color: #ccc;
-    max-width: 180px;
-    width: 100%;
-    max-height: 35px;
-    height: 100%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid gray;
-    font-size: 16px;
-    padding: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 25px;
-}
 
 /* --------------------------------------------------
 --------------------------------------------------
 FIELD OF CONTACT FORM
 --------------------------------------------------
 -------------------------------------------------- */
-
 .contact-field {
     margin-bottom: 2em;
 }
@@ -156,12 +93,57 @@ FIELD OF CONTACT FORM
 
 
 
+
+
+/* --------------------------------------------------
+--------------------------------------------------
+DUO FIELD STYLE
+--------------------------------------------------
+-------------------------------------------------- */
+.duo-field {
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.duo-field label {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.duo-field input {
+    max-width: 180px;
+    width: 100%;
+    max-height: 35px;
+    height: 100%;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+@media (max-width: 550px) {
+    .duo-field {
+        display: flex;
+        flex-direction: column;
+    }
+    .duo-field input {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+
+
+
+
 /* --------------------------------------------------
 --------------------------------------------------
 SPAN ERROR MESSAGE ANIMATION
 --------------------------------------------------
 -------------------------------------------------- */
-
 input:invalid[focused="true"] {
     border: 1px solid red;
 }

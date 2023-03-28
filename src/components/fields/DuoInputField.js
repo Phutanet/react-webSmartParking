@@ -4,23 +4,23 @@ import './Field.css'
 function DuoInputField(props) {
   return (
     <div className={props.className}>
-        <label>{props.label1}</label>
+      <label>{props.stLable}</label>
         <input 
-        name={props.name1} 
-        type={props.type} 
-        value={props.value1} 
-        disabled={props.disabled} 
+            name={props.stName} 
+            type={props.stType} 
+            value={props.stValue} 
+            disabled={props.stDisabled} 
         />
 
-        <label>{props.label2}</label>
+        <label>{props.ndLabel}</label>
         <input 
-        name={props.name2} 
-        type={props.type} 
-        value={props.value2} 
-        disabled={props.disabled} 
+            name={props.ndName} 
+            type={props.ndType} 
+            value={props.ndValue} 
+            disabled={props.ndDisabled} 
         />
     </div>
-  )
-}
+  );
+};
 
 export default DuoInputField
