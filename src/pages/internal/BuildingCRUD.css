@@ -1,155 +1,163 @@
-.CARPARKCRUD-root {
-	min-height: 80vh;
+#buildingCRUD-page-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #dde0e3;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.CARPARKCRUD-title h1 {
-	/* background-color: blueviolet; */
-	text-align: center;
-	font-size: 35px;
-	font-weight: 700;
-	margin-top: 40px;
-	margin-bottom: 20px;
+#buildingCRUD-page-container h1 {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    color: #222831;
 }
 
-.PARKCARDS-container {
-	/* background-color: aqua; */
-	/* top right bottom left */
-	padding: 40px 20px 20px 20px;
-	width: 99%;
-	margin: auto;
-	flex-wrap: wrap;
-	display: flex;
-	/* justify-content: space-between; */
-	/* justify-content: center; */
+#buildingCRUD-page-container .card-group {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    align-items: flex-start;
+    margin-bottom: 1em;
 }
 
-.card-item {
-	padding: 15px 30px;
-	width: 24%;
-	text-align: center;
+
+
+#buildingCRUD-page-container .card-group .card-container {
+    border: none;
+    border-radius: .25rem;
+    overflow: hidden;
+    background-color: #FFFF;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
 }
 
-.card-item:hover {
-	transform: scale(1.02);
-	transition: transform .3s;
-	cursor: pointer;
+#buildingCRUD-page-container .card-group .card-container:hover {
+    transform: scale(1.02);
+    transition: transform .3s;
 }
 
-.inner-card-adder {
-	border-radius: 10px;
-	padding: 35px 20px;
-	min-width: 225px;
-	min-height: 315px;
-	max-height: 370px;
-	width: 100%;
-	box-shadow: 5px 5px 10px 2px rgba(95, 95, 95, 0.24);
-	background: linear-gradient(132deg, rgb(224, 235, 213) 0.00%, rgb(37, 148, 141) 100.00%);
+#buildingCRUD-page-container .card-group .card-container .card-header {
+    margin-bottom: 0.5rem;
 }
 
-.inner-card-parking {
-	border-radius: 10px;
-	padding: 5px 10px;
-	min-width: 225px;
-	min-height: 315px;
-	max-height: 370px;
-	width: 100%;
-	box-shadow: 5px 5px 10px 2px rgba(95, 95, 95, 0.24);
-	background: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%);
+#buildingCRUD-page-container .card-group .card-container .card-header img {
+    display: block;
+    width: 100%;
+    max-height: 300px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
 }
 
-.action-btn-container {
-	/* background-color: aqua; */
-	display: flex;
-	justify-content: flex-end;
+#buildingCRUD-page-container .card-group .card-container .card-body {
+    padding: 0 1em;
 }
 
-.action-btn-container button {
-	background: transparent;
-	border: none;
-	font-size: 30px;
-	cursor: pointer;
-	opacity: 0;
+#buildingCRUD-page-container .card-group .card-container .card-body p {
+    font-size: clamp(0.75rem, 2vw, 1.125rem);
+    font-weight: 600;
 }
 
-.card-item:hover button {
-	opacity: 1;
+.card-footer {
+    opacity: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all 0.3s linear;
+    padding: 0.5em 1em;
 }
 
-.action-btn-container i {
-	color: #d70032;
+.card-footer.active {
+    opacity: 1;
+    max-height: 1000px;
 }
 
-.action-btn-container i:hover {
-	color: #bd0026;
+.card-footer button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: clamp(0.8rem, 2vw, 1.3rem);
+    margin: 0 0.5em;
 }
 
-.inner-card-parking img {
-	max-width: 200px;
-	width: 100%;
-	max-height: 120px;
-	height: 100%;
-	margin-bottom: 10px;
-	border-radius: 10px;
-	align-items: center;
-	transition: transform .2s;
+.card-footer button .access-icon {
+    color: #00D775;
 }
 
-.card-icon {
-	/* background-color: pink; */
-	display: flex;
-	justify-content: center;
+.card-footer button .access-icon:hover {
+    color: #00bd68;
 }
 
-.card-icon i {
-	/* background-color: brown; */
-	width: 120px;
-	height: 120px;
-	border-radius: 50%;
-	transition: transform .2s;
-	font-size: 80px;
-	color: #fff;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.card-footer button .delete-icon {
+    color: #d70032;
 }
 
-.card-title {
-	color: #fff;
-	font-weight: 600;
-	font-size: 24px;
-	letter-spacing: 1px;
-	white-space: pre-line;
-	overflow: hidden;
-	text-overflow: ellipsis;
+.card-footer button .delete-icon:hover {
+    color: #bd0026;
 }
 
-@media screen and (max-width: 1024px) {
-	.card-item {
-		width: 33%;
-		display: block;
-	}
+/* ------------------------------
+------------------------------
+Adding Card Style
+------------------------------
+------------------------------ */
+
+#buildingCRUD-page-container .card-group .adding-card-container {
+    border: none;
+    outline: none;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 0;
 }
 
-@media screen and (max-width: 768px) {
-	.card-item {
-		width: 50%;
-	}
-
-	.wrapper .header {
-		font-size: 16px;
-		height: 50px;
-	}
+#buildingCRUD-page-container .card-group .adding-card-container button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 568px) {
-	.card-item {
-		width: 80%;
-		margin: auto;
-	}
+#buildingCRUD-page-container .card-group .adding-card-container button i {
+    color: #00D775;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: clamp(3rem, 10vw, 6rem);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 320px) {
-	.card-item {
-		width: 100%;
-	}
+#buildingCRUD-page-container .card-group .adding-card-container button p {
+    color: #222831;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#buildingCRUD-page-container .card-group .adding-card-container button:hover i {
+    color: #00bd68;
+}
+
+#buildingCRUD-page-container .card-group .adding-card-container button:hover p {
+    color: #00bd68;
+}
+
+@media (max-width: 800px) {
+    #buildingCRUD-page-container .card-group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    #buildingCRUD-page-container .card-group {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

@@ -1,111 +1,146 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './BuildingCRUD.css';
-import ModalAddParking from '../../components/modal/ModalAddParking';
-import axios from 'axios';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './BuildingCRUD.css'
+import ModalAddParking from '../../components/modal/ModalAddParking'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+
 
 function BuildingCRUD() {
-  const firstRender = useRef(true);
-  const [loading, setLoading] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [placeList, setPlaceList] = useState([]);
-  const navigate = useNavigate();
+    const firstRender = useRef(true);
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+    const [selected, setSelected] = useState(null);
+    const [parkingList, setParkingList] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
 
-  const fetchBuildings = useCallback(async () => {
-    try {
-      const response = await axios.get('/smartparking/api/info/building/all');
-      //กรองข้อมูลและเลือกแค่ building object ที่มีคุณสมบัติ "display" เป็น true
-      const filteredData = response.data.data.filter(building => building.display);
-      setPlaceList(filteredData);
-      setLoading(false);
-    } 
-    catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  }, []);
+    const fetchParking = useCallback(async () => {
+        try {
+            const response = await axios.get("/smartparking/api/info/building/all");
+            //กรองข้อมูลและเลือกแค่ building object ที่มีคุณสมบัติ "display" เป็น true
+            const parkingDisplay = response.data.data.filter(parking => parking.display);
+            setParkingList(parkingDisplay);
+            setLoading(false);
+        }
+        catch (error) {
+            console.log(error);
+            setLoading(false);
+        };
+    }, []);
 
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      fetchBuildings();
-    }
-  }, [fetchBuildings]);
+    const addNewPlace = useCallback(newPlace => {
+        setParkingList(prevPlace => [...prevPlace, newPlace]);
+    }, []);
 
-  const addNewPlace = useCallback(newPlace => {
-    setPlaceList(prevPlace => [...prevPlace, newPlace]);
-  }, []);
+    const handleDelete = useCallback(async (e, buildingID, buildingName) => {
+        e.stopPropagation();
+        Swal.fire({
+            title: `ยืนยันการลบ ${buildingName}`,
+            text: 'เมื่อลบการ์ดสถานที่จอดรถยนต์จะไม่สามารถดูข้อมูลเกี่ยวกับสถานที่นั้นได้อีก',
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'ยกเลิก',
+            cancelButtonColor: '#bd0026',
+            confirmButtonText: 'ลบสถานที่',
+            confirmButtonColor: '#00bd68',
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const token = { accessToken: localStorage.getItem('accessToken') };
+                const postData = {
+                    buildingID: buildingID,
+                    status: false
+                };
+                axios
+                .post('/smartparking/api/gateway/display/building', postData, { headers: token })
+                .then((res) => {
+                    setParkingList(prevList => prevList.filter(parking => parking.buildingID !== buildingID));
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            };
+        });
+    }, []);
 
-  const handleClick = useCallback(buildingID => {
-    navigate('/EXT/show-parking', { state: { buildingID } });
-  }, [navigate]);
+    //เมื่อ click ที่ card element จะไปยังหน้า showParking พร้อมทั้งส่ง buildingID prop เป็น state ไปด้วย
+    const handleClick = useCallback((e, buildingID) => {
+        e.stopPropagation();
+        navigate('/EXT/show-parking', { state: { buildingID: buildingID } });
+    }, [navigate]);
 
-  const handleDelete = useCallback(async (e, buildingID) => {
-    e.stopPropagation();
+    const parkingCard = useMemo(() => {
+        const toggle = (index) => {
+            if (selected === index) {
+                return setSelected(null);
+            } else {
+                return setSelected(index);
+            }
+        };
 
-    const postData = {
-      buildingID: buildingID,
-      status: false,
-    };
-
-    const header = {
-      accessToken: localStorage.getItem('accessToken'),
-    };
-
-    try {
-      await axios.post('/smartparking/api/gateway/display/building', postData, { headers: header });
-      setPlaceList(prevPlace => prevPlace.filter(place => place.buildingID !== buildingID));
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
-  const cardElements = useMemo(() => {
-    return placeList.map(place => (
-      <div key={place.buildingID} className="card-item" onClick={() => handleClick(place.buildingID)}>
-        <div className="inner-card-parking">
-          <div className="action-btn-container">
-            <button onClick={e => handleDelete(e, place.buildingID)}>
-              <i className="fa-solid fa-square-xmark"></i>
-            </button>
-          </div>
-          <img src={place.image ? place.image : "/images/image-default.png"} alt={place.buildingName} />
-          <div className="card-title">{place.buildingName}</div>
-        </div>
-      </div>
-    ));
-  }, [placeList, handleClick, handleDelete]);
-
-
-  return (
-    <div className='CARPARKCRUD-root'>
-      {modalOpen && <ModalAddParking setOpenModal={setModalOpen} setPlace={addNewPlace} />}
-      <div className='CARPARKCRUD-title'>
-        <h1>
-          กรุณาเลือกสถานที่จอดรถ
-        </h1>
-      </div>
-
-      {loading? (<p>Loading...</p>) : (
-        <div className='PARKCARDS-container'>
-            {cardElements}
-
-            <div className="card-item" onClick={() => {setModalOpen(true);}}>
-              <div className="inner-card-adder">
-                <div className='card-icon'>
-                  <i className="fa-solid fa-circle-plus"></i>
+        return parkingList.map((parking, index) => {
+            return(
+            <div 
+                key={parking.buildingID} 
+                className='card-container' 
+                onClick={() => {
+                    toggle(index);
+                }}
+            >
+                <div className='card-header'>
+                    <img 
+                        src={parking.image ? parking.image : "/images/pexels-matt-hardy-2658459.jpg"} 
+                        alt={parking.buildingName}
+                    />
                 </div>
-                <div className="card-title">
-                  เพิ่มที่จอดรถ
+                <div className='card-body'>
+                    <p>{parking.buildingName}</p>
                 </div>
-              </div>
+                <div className={selected === index ? "card-footer active" : "card-footer"}>
+                    <button 
+                        onClick={(e) => handleClick(e, parking.buildingID)}
+                        >
+                        <i className="fa-solid fa-square-arrow-up-right access-icon"></i>
+                    </button>
+                    <button
+                        onClick={(e) => handleDelete(e, parking.buildingID, parking.buildingName)}
+                        >
+                        <i className="fa-solid fa-square-xmark delete-icon"></i>
+                    </button>
+                </div>
             </div>
-            
-        </div>
-      )}
+            );
+        });
+    }, [parkingList, selected, handleClick, handleDelete]);
 
-    </div>
-  )
-}
+    useEffect(() => {
+        if (firstRender.current) {
+            firstRender.current = false;
+            fetchParking();
+        };
+    }, [fetchParking]);
+
+
+
+    return (
+        <div className='page-layout'>
+            {modalOpen && <ModalAddParking setOpenModal={setModalOpen} setPlace={addNewPlace} />}
+            <div id='buildingCRUD-page-container'>
+                <h1>จัดการ อาคาร/ลานจอดรถยนต์</h1>
+                    {loading ? (<p>Loading...</p>) : (
+                        <div className='card-group'>
+                            {parkingCard}
+                            <div className='adding-card-container' onClick={() => setModalOpen(true)}>
+                                <button>
+                                    <i className="fa-solid fa-circle-plus"></i>
+                                    <p>เพิ่มสถานที่</p>
+                                </button>
+                            </div>
+                        </div>
+                    )}
+            </div>
+        </div>
+    );
+};
 
 export default BuildingCRUD

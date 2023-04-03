@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './ShowBuildingExternal.css'
+import './DeviceBuilding.css'
 import axios from 'axios'
 
-
-function ShowBuildingExternal() {
+function DeviceBuilding() {
     const firstRender = useRef(true);
     const navigate = useNavigate();
     const [parkingList, setParkingList] = useState([]);
@@ -21,9 +20,9 @@ function ShowBuildingExternal() {
         };
     }, []);
 
-    //เมื่อ click ที่ card element จะไปยังหน้า showParking พร้อมทั้งส่ง buildingID prop เป็น state ไปด้วย
+    //เมื่อ click ที่ card element จะไปยังหน้า DeviceSelect พร้อมทั้งส่ง buildingID prop เป็น state ไปด้วย
     const handleClick = useCallback((buildingID) => {
-        navigate('/EXT/show-parking', { state: { buildingID: buildingID } });
+        navigate('/INT/devices', { state: { buildingID: buildingID } });
     }, [navigate]);
 
     const parkingCard = useMemo(() => {
@@ -47,18 +46,19 @@ function ShowBuildingExternal() {
             );
         });
     }, [parkingList, handleClick]);
-    
+
     useEffect(() => {
         if (firstRender.current) {
             firstRender.current = false;
             fetchParking();
         };
     }, [fetchParking]);
-
+    
+    
     return (
         <div className='page-layout'>
-            <div id='parking-page-container'>
-                <h1>อาคาร/ลานจอดรถยนต์</h1>
+            <div id='device-building-page-container'>
+                <h1>กรุณาเลือก อาคาร/ลานจอดรถยนต์</h1>
                 <div className='card-group'>
                     {parkingCard}
                 </div>
@@ -67,4 +67,4 @@ function ShowBuildingExternal() {
     );
 };
 
-export default ShowBuildingExternal
+export default DeviceBuilding

@@ -10,15 +10,15 @@ import NavigationBarInternal from './components/navbar/NavigationBarInternal'
 import Footer from './components/footer/Footer'
 
 // EXTERNAL COMPONENTS
-import ShowBuildingExternal from './pages/external/ShowBuildingExternal'
+import ShowBuildingExternal from "./pages/external/ShowBuildingExternal"
 import ShowParking from './pages/external/ShowParking'
 import SearchCar from "./pages/external/SearchCar";
 import Contact from "./pages/external/Contact"
 import Login from './pages/external/Login'
 
 // INTERNAL COMPONENTS
-import BuildingCRUD from './pages/internal/BuildingCRUD'
-import PlacesForDevice from './pages/internal/PlacesForDevice'
+import BuildingCRUD from "./pages/internal/BuildingCRUD";
+import DeviceBuilding from "./pages/internal/DeviceBuilding";
 import Devices from './pages/internal/Devices'
 import DeviceInformation from './pages/internal/DeviceInformation'
 import MessageDealing from "./pages/internal/MessageDealing";
@@ -51,7 +51,7 @@ function App() {
       {/* we want to protect these routes */}
       <Route element={<AuthProtectedComponent />}>
         <Route path='/INT/carpark-crud' element={<BuildingCRUD />} />
-        <Route path='/INT/places-for-device' element={<PlacesForDevice />} />
+        <Route path='/INT/places-for-device' element={<DeviceBuilding />} />
         <Route path='/INT/devices' element={<Devices />} />
         <Route path='/INT/device-information' element={<DeviceInformation />} />
         <Route path='/INT/message-dealing' element={<MessageDealing />} />

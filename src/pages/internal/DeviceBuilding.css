@@ -1,4 +1,4 @@
-#parking-page-container {
+#device-building-page-container {
     width: 100%;
     min-height: 100vh;
     background-color: #dde0e3;
@@ -8,14 +8,14 @@
     align-items: center;
 }
 
-#parking-page-container h1 {
+#device-building-page-container h1 {
     margin-top: 1em;
     margin-bottom: 2em;
     font-size: clamp(1.25rem, 2vw, 2rem);
     color: #222831;
 }
 
-#parking-page-container .card-group {
+#device-building-page-container .card-group {
     max-width: 1200px;
     width: 100%;
     display: grid;
@@ -25,7 +25,7 @@
     margin-bottom: 1em;
 }
 
-#parking-page-container .card-group .card-container {
+#device-building-page-container .card-group .card-container {
     border: none;
     border-radius: .25rem;
     overflow: hidden;
@@ -33,17 +33,17 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
 }
 
-#parking-page-container .card-group .card-container:hover {
+#device-building-page-container .card-group .card-container:hover {
     transform: scale(1.02);
     transition: transform .3s;
     cursor: pointer;
 }
 
-#parking-page-container .card-group .card-container .card-header {
+#device-building-page-container .card-group .card-container .card-header {
     margin-bottom: 0.5rem;
 }
 
-#parking-page-container .card-group .card-container .card-header img {
+#device-building-page-container .card-group .card-container .card-header img {
     display: block;
     width: 100%;
     max-height: 300px;
@@ -52,23 +52,23 @@
     object-position: center;
 }
 
-#parking-page-container .card-group .card-container .card-body {
+#device-building-page-container .card-group .card-container .card-body {
     padding: 0 1em;
 }
 
-#parking-page-container .card-group .card-container .card-body p {
+#device-building-page-container .card-group .card-container .card-body p {
     font-size: clamp(0.75rem, 2vw, 1.125rem);
     font-weight: 600;
 }
 
 @media (max-width: 800px) {
-    #parking-page-container .card-group {
+    #device-building-page-container .card-group {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 400px) {
-    #parking-page-container .card-group {
+    #device-building-page-container .card-group {
         grid-template-columns: repeat(1, 1fr);
     }
 }
