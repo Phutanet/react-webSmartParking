@@ -19,7 +19,7 @@ import Login from './pages/external/Login'
 // INTERNAL COMPONENTS
 import BuildingCRUD from "./pages/internal/BuildingCRUD";
 import DeviceBuilding from "./pages/internal/DeviceBuilding";
-import Devices from './pages/internal/Devices'
+import DeviceCRUD from "./pages/internal/DeviceCRUD";
 import DeviceInformation from './pages/internal/DeviceInformation'
 import MessageDealing from "./pages/internal/MessageDealing";
 import UserAccounts from "./pages/internal/UserAccounts"
@@ -52,7 +52,7 @@ function App() {
       <Route element={<AuthProtectedComponent />}>
         <Route path='/INT/carpark-crud' element={<BuildingCRUD />} />
         <Route path='/INT/places-for-device' element={<DeviceBuilding />} />
-        <Route path='/INT/devices' element={<Devices />} />
+        <Route path='/INT/devices' element={<DeviceCRUD />} />
         <Route path='/INT/device-information' element={<DeviceInformation />} />
         <Route path='/INT/message-dealing' element={<MessageDealing />} />
         <Route path='/INT/user-accounts' element={<UserAccounts />} />

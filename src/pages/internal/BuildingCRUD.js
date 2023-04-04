@@ -36,7 +36,7 @@ function BuildingCRUD() {
         e.stopPropagation();
         Swal.fire({
             title: `ยืนยันการลบ ${buildingName}`,
-            text: 'เมื่อลบการ์ดสถานที่จอดรถยนต์จะไม่สามารถดูข้อมูลเกี่ยวกับสถานที่นั้นได้อีก',
+            text: 'เมื่อลบการ์ดสถานที่จอดรถยนต์จะไม่สามารถดูข้อมูลที่เกี่ยวข้องกับสถานที่',
             icon: 'warning',
             showCancelButton: true,
             cancelButtonText: 'ยกเลิก',
