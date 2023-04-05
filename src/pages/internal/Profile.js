@@ -1,78 +1,95 @@
-import React, { useState, useEffect, useRef } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './Profile.css'
+import axios from 'axios';
+import { useTable, useFlexLayout } from 'react-table';
+import { parseISO, format } from 'date-fns';
 
 function Profile() {
-  const firstRender = useRef(true)
-  const [dataResponse, setDataResponse] = useState(null)
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [employeeId, setEmployeeId] = useState('')
-  const [accountRole, setAccountRole] = useState('')
-  const [position, setPosition] = useState('')
-  const [department, setDepartment] = useState('')
-  const [company, setCompany] = useState('')
-  const [phone, setPhone] = useState('')
-  const [id, setId] = useState('')
-  const [createAt, setCreateAt] = useState('')
-  const [latestUpdate, setLatestUpdate] = useState('')
+    const firstRender = useRef(true);
+    const [credentials, setCredentials] = useState({});
 
+    useEffect(() => {
+        if (firstRender.current) {
+        firstRender.current = false;
+        const token = { accessToken: `${localStorage.getItem('accessToken')}` };
+        axios
+            .get('/smartparking/profile/me', { headers: token })
+            .then((res) => {
+                setCredentials(res.data.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        };
+    }, []);
 
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
+    const columns = useMemo(() => [
+        {
+            Header: 'รายการ',
+            accessor: 'field',
+        },
+        {
+            Header: 'ข้อมูล',
+            accessor: 'value',
+        },
+    ], []);
 
-      const header = {
-        'accessToken': `${localStorage.getItem('accessToken')}`
-      }
+    const data = useMemo(() => {
+        // Object.entries(credentials) will return an array of key-value pairs for the properties of the 'credentials'
+        return Object.entries(credentials).map(([key, value]) => {
+            if (key === 'update_latest' || key === 'create_at') {
+                // ใช้ฟังก์ชั่น parseISO เพื่อแปลงค่า String value เป็น Date object
+                const date = parseISO(value);
+                // ใช้ฟังก์ชั่น format เพื่อจัดการข้อมูล Date object ให้แสดงผลในรูปแบบ 'dd/MM/yyyy HH:mm:ss'
+                value = format(date, 'dd/MM/yyyy HH:mm:ss');
+            }
+            return {
+                field: key,
+                value: value,
+            };
+        });
+    }, [credentials]);
 
-      axios
-      .get('/smartparking/profile/me', {headers: header})
-      .then(res => {
-        setDataResponse(res.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    }
-  }, [])
+  const tableInstance = useTable({ columns, data }, useFlexLayout);
 
-  //เมื่อ dataResponse มีการเปลี่ยนแปลงค่า -> ทำการ set ค่าให้ props
-  useEffect(() => {
-    if (dataResponse) {
-      setFirstName(dataResponse.data['firstname']);
-      setLastName(dataResponse.data['lastname']);
-      setEmail(dataResponse.data['email']);
-      setEmployeeId(dataResponse.data['employeeID']);
-      setAccountRole(dataResponse.data['role']);
-      setPosition(dataResponse.data['position']);
-      setDepartment(dataResponse.data['department']);
-      setCompany(dataResponse.data['company']);
-      setPhone(dataResponse.data['phone']);
-      setId(dataResponse.data['_id']);
-      setCreateAt(dataResponse.data['create_at']);
-      setLatestUpdate(dataResponse.data['update_latest']);
-    }
-  }, [dataResponse]);
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
 
   return (
-    <div id='PROFILE-root'>
-      <h1>User Profile</h1>
-      <p>First name: {firstName}</p>
-      <p>Last name: {lastName}</p>
-      <p>Email: {email}</p>
-      <p>EmployeeID: {employeeId}</p>
-      <p>Account role: {accountRole}</p>
-      <p>Position: {position}</p>
-      <p>Department: {department}</p>
-      <p>Company: {company}</p>
-      <p>Phone: {phone}</p>
-      <p>ID: {id}</p>
-      <p>Create at: {createAt}</p>
-      <p>Latest update: {latestUpdate}</p>
+    <div className="page-layout">
+        <div id="PROFILE-page-container">
+            <div className="table-container">
+                <div className='table-header'>
+                    <h1>ข้อมูลบัญชีผู้ใช้งาน</h1>
+                </div>
+                <div className="table-body">
+                    <table {...getTableProps()}>
+                        <thead>
+                        {headerGroups.map((headerGroup) => (
+                            <tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map((column) => (
+                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            ))}
+                            </tr>
+                        ))}
+                        </thead>
+                        <tbody {...getTableBodyProps()}>
+                        {rows.map((row) => {
+                            prepareRow(row);
+                            return (
+                            <tr {...row.getRowProps()}>
+                                {row.cells.map((cell) => {
+                                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                                })}
+                            </tr>
+                            );
+                        })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

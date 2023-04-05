@@ -11,7 +11,7 @@ import Footer from './components/footer/Footer'
 
 // EXTERNAL COMPONENTS
 import ShowBuildingExternal from "./pages/external/ShowBuildingExternal"
-import ShowParking from './pages/external/ShowParking'
+import ShowParking from "./pages/external/ShowParking";
 import SearchCar from "./pages/external/SearchCar";
 import Contact from "./pages/external/Contact"
 import Login from './pages/external/Login'
@@ -20,12 +20,12 @@ import Login from './pages/external/Login'
 import BuildingCRUD from "./pages/internal/BuildingCRUD";
 import DeviceBuilding from "./pages/internal/DeviceBuilding";
 import DeviceCRUD from "./pages/internal/DeviceCRUD";
-import DeviceInformation from './pages/internal/DeviceInformation'
+import DeviceInformation from "./pages/internal/DeviceInformation";
 import MessageDealing from "./pages/internal/MessageDealing";
 import UserAccounts from "./pages/internal/UserAccounts"
 import Register from "./pages/internal/Register"
 import SystemSetting from "./pages/internal/SystemSetting"
-import Profile from './pages/internal/Profile'
+import Profile from "./pages/internal/Profile";
 
 
 

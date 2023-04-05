@@ -201,10 +201,6 @@ nav .navbar .hamburger-icon:hover {
         position: relative;
         top: 0;
         box-shadow: none;
-        display: none;
-    }
-
-    .nav-item-ul li:hover .nav-sub-item-ul {
         display: block;
     }
 

@@ -1,0 +1,95 @@
+#PROFILE-page-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #393e46;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#PROFILE-page-container .table-container {
+    width: 60vw;
+    height: 90vh;
+    background-color: #fff5;
+    box-shadow: 0 0.4rem 0.8rem #0005;
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+
+#PROFILE-page-container .table-container .table-header {
+    width: 100%;
+    height: 10%;
+    background-color: #222831;
+    padding: 0.8rem .25em;
+    text-align: center;
+}
+
+#PROFILE-page-container .table-container .table-header h1 {
+    font-size: clamp(1rem, 5vw, 2rem);
+    font-weight: 600;
+    color: #f2f2f2;
+}
+
+#PROFILE-page-container .table-container .table-body {
+    width: 95%;
+    max-height: calc(89% - 1.6rem);
+    background-color: #fffb;
+    margin: 0.8rem auto;
+    border-radius: 0.6rem;
+    overflow: auto;
+}
+
+#PROFILE-page-container .table-container .table-body::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+#PROFILE-page-container .table-container .table-body::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+
+#PROFILE-page-container .table-container .table-body:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}
+
+#PROFILE-page-container .table-container .table-body table {
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+#PROFILE-page-container .table-container .table-body table,
+#PROFILE-page-container .table-container .table-body table th,
+#PROFILE-page-container .table-container .table-body table td {
+    border-collapse: collapse;
+    padding: 1rem;
+}
+
+#PROFILE-page-container .table-container .table-body table thead th {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    text-align: center;
+    position: sticky;
+    top: 0;
+    background-color: #d5d1defe;
+}
+
+#PROFILE-page-container .table-container .table-body table th,
+#PROFILE-page-container .table-container .table-body table td {
+    border: 1px solid #ccc;
+}
+
+#PROFILE-page-container .table-container .table-body table tbody tr:nth-child(even) {
+    background-color: #0000000b;
+}
+
+#PROFILE-page-container .table-container .table-body table tbody tr:hover {
+    background-color: #fff6;
+}
+
+@media (max-width: 1000px) {
+    #PROFILE-page-container .table-container .table-body table tbody td:not(:first-of-type) {
+        min-width: 12.1rem;
+    }
+}

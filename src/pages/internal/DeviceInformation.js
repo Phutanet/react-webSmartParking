@@ -1,25 +1,21 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useTable } from "react-table";
-import PrevPageButton from '../../components/button/PrevPageButton';
-import axios from 'axios';
-import './DeviceInformation.css';
+import React, { useEffect, useMemo, useState, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
+import { useTable } from "react-table"
+import PrevPageButton from '../../components/button/PrevPageButton'
+import './DeviceInformation.css'
+import axios from 'axios'
+
+
 
 function DeviceInformation() {
     const location = useLocation();
+    const firstRender = useRef(true);
     const buildingID = location.state.buildingID;
-    const deviceID = location.state.deviceID;
     const floorIndex = location.state.floorIndex;
+    const deviceID = location.state.deviceID;
     const [device, setDevice] = useState({});
     const [details, setDetails] = useState([]);
-    const data = useMemo(() => details,[details]);
-
-    // console.log("buildingID =",buildingID);
-    // console.log("deviceID =",deviceID);
-    // console.log("floorIndex =",floorIndex);
-
-    // console.log("device =",device);
-    // console.log("details =",details);
+    const data = useMemo(() => details, [details]);
 
     const columns = useMemo(() => [
         {
@@ -32,67 +28,77 @@ function DeviceInformation() {
         }
     ], []);
 
+    
     useEffect(() => {
-        const fetchDevice = async () => {
-            const token = {accessToken: localStorage.getItem('accessToken')};
+        if (firstRender.current) {
+            firstRender.current = false;
+            const token = { accessToken: `${localStorage.getItem('accessToken')}` };
             const postData = {
                 buildingID: buildingID,
                 floorIndex: floorIndex,
                 deviceID: deviceID
             };
 
-            try {
-                const response = await axios.post("/smartparking/api/info/device/detail", postData, {headers: token});
-                setDevice(response.data.data);
-                setDetails(response.data.data.detail);
-            } catch (error) {
-                console.log(error);
-            }
+            axios
+                .post("/smartparking/api/info/device/detail", postData, {headers: token})
+                .then((res) => {
+                    setDevice(res.data.data);
+                    setDetails(res.data.data.detail);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         };
-
-        fetchDevice();
-    }, [buildingID, deviceID, floorIndex]);
+    }, [buildingID, floorIndex, deviceID]);
 
     const tableInstance = useTable({ columns, data });
-    const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} =  tableInstance
-
-
-  return (
-    <div id='DEVICEINFO-root'>
-        <PrevPageButton />
-
-        <div id='DEVICCEINFO-title'>
-            <h2>{device.deviceName}</h2>
+    const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} =  tableInstance;
+    
+    return (
+        <div className='page-layout'>
+            <div id='DEVINFO-page-container'>
+                <PrevPageButton />
+                <div id='DEVINFO-page-content'>
+                    <div className='image-container'>
+                        <img 
+                            src={device.image ? device.image : "/images/pexels-photomix-company-96612.jpg"} 
+                            alt={device.deviceName}
+                        />
+                    </div>
+                    <div className='table-container'>
+                        <div className='table-header'>
+                            <h1>{device.deviceName}</h1>
+                        </div>
+                        <div className="table-body">
+                            <table {...getTableProps()}>
+                                <thead>
+                                    {headerGroups.map((headerGroup) => (
+                                    <tr {...headerGroup.getHeaderGroupProps()}>
+                                        {headerGroup.headers.map((column, index) => (
+                                            <th key={index} {...column.getHeaderProps()}>{column.render('Header')}</th>
+                                        ))}
+                                    </tr>
+                                    ))}
+                                </thead>
+                                <tbody {...getTableBodyProps()}>
+                                    {rows.map((row) => {
+                                        prepareRow(row) 
+                                        return(
+                                            <tr {...row.getRowProps()}>
+                                                {row.cells.map((cell, index) => {
+                                                    return <td key={index} {...cell.getCellProps()}>{cell.render('Cell')}</td>   
+                                                })}
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div id='DEVICEINFO-table-container'>
-            <table {...getTableProps()}>
-                <thead>
-                    {headerGroups.map((headerGroup) => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column, index) => (
-                                <th key={index} {...column.getHeaderProps()}>{column.render('Header')}</th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-
-                <tbody {...getTableBodyProps()}>
-                    {rows.map((row) => {
-                        prepareRow(row)
-                        return(
-                        <tr {...row.getRowProps()}>
-                            {row.cells.map((cell, index) => {
-                                return <td key={index} {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                            })}
-                        </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
-        </div>
-    </div>
-  );
+    );
 };
 
 export default DeviceInformation
