@@ -2,12 +2,12 @@ import React, { useEffect, useMemo, useState, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTable } from "react-table"
 import PrevPageButton from '../../components/button/PrevPageButton'
-import './DeviceInformation.css'
+import './DeviceInfo.css'
 import axios from 'axios'
 
 
 
-function DeviceInformation() {
+function DeviceInfo() {
     const location = useLocation();
     const firstRender = useRef(true);
     const buildingID = location.state.buildingID;
@@ -56,12 +56,14 @@ function DeviceInformation() {
     
     return (
         <div className='page-layout'>
-            <div id='DEVINFO-page-container'>
+            <div id='DEVICEINFO-PAGE-CONTAINER'>
                 <PrevPageButton />
-                <div id='DEVINFO-page-content'>
+                <div id='DEVICEINFO-PAGE-CONTENT'>
                     <div className='image-container'>
                         <img 
-                            src={device.image ? device.image : "/images/pexels-photomix-company-96612.jpg"} 
+                            src={device.image ? device.image : 
+                                "/images/Camera_test.jpg"
+                            } 
                             alt={device.deviceName}
                         />
                     </div>
@@ -101,4 +103,4 @@ function DeviceInformation() {
     );
 };
 
-export default DeviceInformation
+export default DeviceInfo

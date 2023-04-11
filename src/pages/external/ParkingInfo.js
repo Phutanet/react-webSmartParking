@@ -2,7 +2,7 @@ import React, {useEffect, useState, useMemo} from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTable } from "react-table"
 import PrevPageButton from '../../components/button/PrevPageButton'
-import './ShowParking.css'
+import './ParkingInfo.css'
 import axios from 'axios'
 
 function useCurrentTime() {
@@ -19,7 +19,7 @@ function useCurrentTime() {
     return currentTime;
 };
 
-function ShowParking() {
+function ParkingInfo() {
     const location = useLocation();
     const buildingID = location.state.buildingID;
     const currentTime = useCurrentTime();
@@ -95,20 +95,22 @@ function ShowParking() {
     
     return (
         <div className='page-layout'>
-            <div id='SHOWPARKING-page-container'>
+            <div id='PARKINGINFO-page-container'>
                 <div 
-                    id='SHOWPARKING-page-banner' 
+                    id='PARKINGINFO-page-banner' 
                     style={{
-                        backgroundImage: `url(${buildingDetail.image ? buildingDetail.image : "https://smart-park.ino.nectec.or.th:60249/smartparking/images/buildings/nstda/id_12_sd/front.jpg"})`
+                        backgroundImage: `url(${buildingDetail.image ? buildingDetail.image : 
+                            "https://smart-park.ino.nectec.or.th:60249/smartparking/images/buildings/nstda/id_19_inc2/front.jpg"
+                        })`
                     }}
                 >
                     <PrevPageButton />
                 </div>
-                <div id='SHOWPARKING-page-title'>
+                <div id='PARKINGINFO-page-title'>
                     <h1>{buildingDetail.buildingName}</h1>
                     <h3>{currentTime}</h3>
                 </div>
-                <div id='SHOWPARKING-page-content'>
+                <div id='PARKINGINFO-page-content'>
                     <table {...getTableProps()}>
                         <thead>
                             {headerGroups.map((headerGroup) => (
@@ -138,4 +140,4 @@ function ShowParking() {
     );
 };
 
-export default ShowParking
+export default ParkingInfo

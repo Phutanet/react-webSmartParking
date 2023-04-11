@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import InputField from '../../components/fields/InputField';
-import Button2 from '../../components/button/Button2';
+import Button from '../../components/button/Button';
 import LeafletMap from '../../components/map/LeafletMap';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -100,7 +100,7 @@ function Contact() {
                             required={true}
                         />
 
-                        <Button2 label="ส่ง" type="submit" className="id-btn" />
+                        <Button label="ส่ง" type="submit" className="id-btn" />
 
                     </form>
                 </div>

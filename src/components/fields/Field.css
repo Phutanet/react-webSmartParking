@@ -129,6 +129,7 @@ DUO FIELD STYLE
         display: flex;
         flex-direction: column;
     }
+
     .duo-field input {
         max-width: 100%;
         width: 100%;

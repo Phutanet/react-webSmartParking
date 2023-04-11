@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import './SearchCar.css';
-import Button2 from '../../components/button/Button2';
-import videoBg from '../../assets/pexels-marian-croitoru-6543307.mp4';
+import Button from '../../components/button/Button';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useTable, useGlobalFilter, usePagination, useSortBy } from "react-table";
@@ -115,7 +114,7 @@ function SearchCar() {
     <div className='page-layout'>
         <section id='search-section-1'>
             <div className='overlay'></div>
-            <video src={videoBg} autoPlay loop muted />
+            <video src={process.env.PUBLIC_URL + '/images/pexels-marian-croitoru-6543307.mp4'} autoPlay loop muted />
             <div id='content'>
                 <h1>ค้นหารถยนต์ด้วยเลขทะเบียน</h1>
                 <p>ระบุข้อมูลหมายเลขทะเบียนรถยนต์ของคุณเพื่อใช้ในการค้นหารายละเอียดข้อมูลการจอดรถยนต์</p>
@@ -142,7 +141,7 @@ function SearchCar() {
                         </select>
                     </div>
 
-                    <Button2 className="id-btn" type="submit" label="ค้นหา" />
+                    <Button className="id-btn" type="submit" label="ค้นหา" />
                 </form>
             </div>
         </section>

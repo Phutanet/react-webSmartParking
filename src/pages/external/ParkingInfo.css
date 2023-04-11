@@ -1,4 +1,4 @@
-#SHOWPARKING-page-container {
+#PARKINGINFO-page-container {
     width: 100%;
     min-height: 100vh;
     background-color: #f2f2f2;
@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-#SHOWPARKING-page-banner {
+#PARKINGINFO-page-banner {
     width: 100%;
     min-height: 60vh;
     background-color: rgba(57, 62, 70, 0.5);
@@ -19,7 +19,7 @@
     margin-bottom: 20px;
 }
 
-#SHOWPARKING-page-title {
+#PARKINGINFO-page-title {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,34 +27,34 @@
     margin-bottom: 20px;
 }
 
-#SHOWPARKING-page-title h1 {
+#PARKINGINFO-page-title h1 {
     font-size: clamp(1.3rem, 5vw, 2rem);
     font-weight: 600;
     color: #222831;
 }
 
-#SHOWPARKING-page-title h3 {
+#PARKINGINFO-page-title h3 {
     font-size: clamp(1rem, 5vw, 1.5rem);
     font-weight: 500;
     color: #222831;
 }
 
-#SHOWPARKING-page-content {
+#PARKINGINFO-page-content {
     min-height: 60vh;
     margin-bottom: 3em;
 }
 
-#SHOWPARKING-page-content table {
+#PARKINGINFO-page-content table {
     width: 60vw;
     text-align: center;
     border-spacing: 2px 10px;
 }
 
-#SHOWPARKING-page-content th {
+#PARKINGINFO-page-content th {
     display: none;
 }
 
-#SHOWPARKING-page-content td {
+#PARKINGINFO-page-content td {
     border: 3px solid #000000;
     border-radius: 4px;
     font-size: clamp(1rem, 5vw, 2rem);
@@ -62,6 +62,6 @@
     transition: all 0.4s ease;
 }
 
-#SHOWPARKING-page-content td:first-child {
+#PARKINGINFO-page-content td:first-child {
     width: 30%;
 }

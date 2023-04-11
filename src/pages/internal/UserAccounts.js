@@ -120,7 +120,7 @@ function UserAccounts() {
             Header:'Actions',
             columns: [
                 {
-                    Header: "Delete / Edit info / Edit password",
+                    Header: "Edit info / Edit password / Delete Account",
                     accessor: "_id",
                     Cell: ({ value }) => (
                     <div className="action-btn-group">

@@ -1,47 +1,50 @@
-.button-container button {
-    width: 120px;
-    height: 40px;
-    background-color: initial;
-    font-size: 16px;
-    font-weight: 700;
-    color: #FFFFFF;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+/* --------------------------------------------------
+--------------------------------------------------
+UNIQUE BUTTON
+--------------------------------------------------
+-------------------------------------------------- */
+
+.id-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.id-btn button {
+    max-width: 240px;
+    width: 100%;
+    min-height: 45px;
+    background-color: #222831;
+    border: 2px solid #f96d00;
+    border-radius: 30px;
+    box-shadow: #f96d00 4px 4px 0 0;
+    color: #f2f2f2;
     cursor: pointer;
     display: inline-block;
-    line-height: 40px;
-    outline: 0;
-    overflow: hidden;
-    padding: 0 20px;
-    pointer-events: auto;
-    position: relative;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 0 18px;
+    line-height: 45px;
     text-align: center;
-    touch-action: manipulation;
+    text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
-    vertical-align: top;
-    white-space: nowrap;
-    z-index: 9;
-    border: 0;
+    touch-action: manipulation;
+    overflow-wrap: break-word;
 }
 
-.button-container .submit-btn {
-    background-image: linear-gradient(-180deg, #00D775, #00BD68);
+.id-btn button:hover {
+    background-color: #393e46;
 }
 
-.button-container .submit-btn:hover {
-    background: #00bd68;
+.id-btn button:active {
+    box-shadow: #f96d00 2px 2px 0 0;
+    transform: translate(2px, 2px);
 }
 
-.button-container .cancel-btn {
-    background-image: linear-gradient(-180deg, #d70032, #bd0026);
-}
-
-.button-container .cancel-btn:hover {
-    background: #bd0026;
-}
-
-.button-container .disabled-btn {
-    cursor: not-allowed;
-    background: #e7e7e7;
+@media (max-width: 340px) {
+    .id-btn button {
+        font-size: 1rem;
+    }
 }

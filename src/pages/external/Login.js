@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import Button2 from "../../components/button/Button2";
+import Button from "../../components/button/Button";
 import ImageSlider from '../../components/slider/ImageSlider';
 import axios from "axios";
 import Swal from 'sweetalert2';
@@ -33,7 +33,7 @@ function LoginPage() {
                 const role = response?.data?.role;
                 localStorage.setItem('role', role);
 
-                window.location.href = '/INT/carpark-crud';
+                window.location.href = '/internal/manage-buildings';
             });
         } catch (err) {
             Swal.fire({
@@ -84,7 +84,7 @@ function LoginPage() {
                                 />
                             </div>
 
-                            <Button2 className="id-btn" type="submit" label="เข้าสู่ระบบ"/>
+                            <Button className="id-btn" type="submit" label="เข้าสู่ระบบ"/>
                             
                         </form>
                     </div>

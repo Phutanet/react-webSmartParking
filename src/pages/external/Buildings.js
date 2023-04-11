@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './ShowBuildingExternal.css'
+import './Buildings.css'
 import axios from 'axios'
 
 
-function ShowBuildingExternal() {
+function Buildings() {
     const firstRender = useRef(true);
     const navigate = useNavigate();
     const [parkingList, setParkingList] = useState([]);
@@ -23,7 +23,7 @@ function ShowBuildingExternal() {
 
     //เมื่อ click ที่ card element จะไปยังหน้า showParking พร้อมทั้งส่ง buildingID prop เป็น state ไปด้วย
     const handleClick = useCallback((buildingID) => {
-        navigate('/EXT/show-parking', { state: { buildingID: buildingID } });
+        navigate('/parking-info', { state: { buildingID: buildingID } });
     }, [navigate]);
 
     const parkingCard = useMemo(() => {
@@ -57,7 +57,7 @@ function ShowBuildingExternal() {
 
     return (
         <div className='page-layout'>
-            <div id='parking-page-container'>
+            <div id='BUILDINGS-PAGE-CONTAINER'>
                 <h1>อาคาร/ลานจอดรถยนต์</h1>
                 <div className='card-group'>
                     {parkingCard}
@@ -67,4 +67,4 @@ function ShowBuildingExternal() {
     );
 };
 
-export default ShowBuildingExternal
+export default Buildings

@@ -1,4 +1,4 @@
-#DEVINFO-page-container {
+#DEVICEINFO-PAGE-CONTAINER {
     width: 100%;
     min-height: 100vh;
     background-color: #393e46;
@@ -7,7 +7,7 @@
     position: relative;
 }
 
-#DEVINFO-page-content {
+#DEVICEINFO-PAGE-CONTENT {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@
     background: none;
 }
 
-#DEVINFO-page-content .image-container {
+#DEVICEINFO-PAGE-CONTENT .image-container {
     max-width: 360px;
     max-height: 360px;
     margin-bottom: 2em;
@@ -24,7 +24,7 @@
     overflow: hidden;
 }
 
-#DEVINFO-page-content .image-container img {
+#DEVICEINFO-PAGE-CONTENT .image-container img {
     display: block;
     width: 100%;
     height: 100%;
@@ -33,7 +33,7 @@
     object-position: center;
 }
 
-#DEVINFO-page-content .table-container {
+#DEVICEINFO-PAGE-CONTENT .table-container {
     width: 60vw;
     height: 90vh;
     background-color: #fff5;
@@ -42,7 +42,7 @@
     overflow: hidden;
 }
 
-#DEVINFO-page-content .table-container .table-header {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-header {
     width: 100%;
     height: 10%;
     background-color: #222831;
@@ -50,13 +50,13 @@
     text-align: center;
 }
 
-#DEVINFO-page-content .table-container .table-header h1 {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-header h1 {
     font-size: clamp(1rem, 5vw, 2rem);
     font-weight: 600;
     color: #f2f2f2;
 }
 
-#DEVINFO-page-content .table-container .table-body {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body {
     width: 95%;
     max-height: calc(89% - 1.6rem);
     background-color: #fffb;
@@ -65,34 +65,34 @@
     overflow: auto;
 }
 
-#DEVINFO-page-content .table-container .table-body::-webkit-scrollbar {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
 }
 
-#DEVINFO-page-content .table-container .table-body::-webkit-scrollbar-thumb {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body::-webkit-scrollbar-thumb {
     border-radius: 0.5rem;
     background-color: #0004;
     visibility: hidden;
 }
 
-#DEVINFO-page-content .table-container .table-body:hover::-webkit-scrollbar-thumb {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body:hover::-webkit-scrollbar-thumb {
     visibility: visible;
 }
 
-#DEVINFO-page-content .table-container .table-body table {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table {
     width: 100%;
     overflow-wrap: break-word;
 }
 
-#DEVINFO-page-content .table-container .table-body table,
-#DEVINFO-page-content .table-container .table-body table th,
-#DEVINFO-page-content .table-container .table-body table td {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table,
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table th,
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table td {
     border-collapse: collapse;
     padding: 1rem;
 }
 
-#DEVINFO-page-content .table-container .table-body table thead th {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table thead th {
     font-size: clamp(1rem, 2vw, 1.25rem);
     text-align: center;
     position: sticky;
@@ -100,21 +100,21 @@
     background-color: #d5d1defe;
 }
 
-#DEVINFO-page-content .table-container .table-body table th,
-#DEVINFO-page-content .table-container .table-body table td {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table th,
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table td {
     border: 1px solid #ccc;
 }
 
-#DEVINFO-page-content .table-container .table-body table tbody tr:nth-child(even) {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table tbody tr:nth-child(even) {
     background-color: #0000000b;
 }
 
-#DEVINFO-page-content .table-container .table-body table tbody tr:hover {
+#DEVICEINFO-PAGE-CONTENT .table-container .table-body table tbody tr:hover {
     background-color: #fff6;
 }
 
 @media (max-width: 1000px) {
-    #DEVINFO-page-content .table-container .table-body table tbody td:not(:first-of-type) {
+    #DEVICEINFO-PAGE-CONTENT .table-container .table-body table tbody td:not(:first-of-type) {
         min-width: 12.1rem;
     }
 }

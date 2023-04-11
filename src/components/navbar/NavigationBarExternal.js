@@ -34,7 +34,7 @@ function NavigationBarExternal() {
                 <ul className='nav-item-ul'>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/' 
+                        to='/buildings' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                         onClick={toggleMenu} 
                         >
@@ -43,7 +43,7 @@ function NavigationBarExternal() {
                     </li>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/EXT/search-car' 
+                        to='/search-car' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
@@ -52,7 +52,7 @@ function NavigationBarExternal() {
                     </li>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/EXT/contact' 
+                        to='/contact' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
@@ -61,7 +61,7 @@ function NavigationBarExternal() {
                     </li>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/EXT/login' 
+                        to='/login' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                         onClick={toggleMenu}
                         >

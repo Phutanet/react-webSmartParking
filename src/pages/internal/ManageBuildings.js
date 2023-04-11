@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './BuildingCRUD.css'
+import './ManageBuildings.css'
 import ModalAddParking from '../../components/modal/ModalAddParking'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
 
-function BuildingCRUD() {
+function ManageBuildings() {
     const firstRender = useRef(true);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -63,10 +63,10 @@ function BuildingCRUD() {
         });
     }, []);
 
-    //เมื่อ click ที่ card element จะไปยังหน้า showParking พร้อมทั้งส่ง buildingID prop เป็น state ไปด้วย
+    //เมื่อ click ที่ card element จะไปยังหน้า ParkingInfo พร้อมทั้งส่ง buildingID prop เป็น state ไปด้วย
     const handleClick = useCallback((e, buildingID) => {
         e.stopPropagation();
-        navigate('/EXT/show-parking', { state: { buildingID: buildingID } });
+        navigate('/parking-info', { state: { buildingID: buildingID } });
     }, [navigate]);
 
     const parkingCard = useMemo(() => {
@@ -89,7 +89,9 @@ function BuildingCRUD() {
             >
                 <div className='card-header'>
                     <img 
-                        src={parking.image ? parking.image : "/images/pexels-matt-hardy-2658459.jpg"} 
+                        src={parking.image ? parking.image : 
+                            "/images/pexels-matt-hardy-2658459.jpg"
+                        } 
                         alt={parking.buildingName}
                     />
                 </div>
@@ -125,7 +127,7 @@ function BuildingCRUD() {
     return (
         <div className='page-layout'>
             {modalOpen && <ModalAddParking setOpenModal={setModalOpen} setPlace={addNewPlace} />}
-            <div id='buildingCRUD-page-container'>
+            <div id='MANAGE-BUILDINGS-PAGE-CONTAINER'>
                 <h1>จัดการ อาคาร/ลานจอดรถยนต์</h1>
                     {loading ? (<p>Loading...</p>) : (
                         <div className='card-group'>
@@ -143,4 +145,4 @@ function BuildingCRUD() {
     );
 };
 
-export default BuildingCRUD
+export default ManageBuildings

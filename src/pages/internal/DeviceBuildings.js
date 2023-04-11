@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './DeviceBuilding.css'
+import './DeviceBuildings.css'
 import axios from 'axios'
 
-function DeviceBuilding() {
+function DeviceBuildings() {
     const firstRender = useRef(true);
     const navigate = useNavigate();
     const [parkingList, setParkingList] = useState([]);
@@ -20,9 +20,9 @@ function DeviceBuilding() {
         };
     }, []);
 
-    //เมื่อ click ที่ card element จะไปยังหน้า DeviceSelect พร้อมทั้งส่ง buildingID prop เป็น state ไปด้วย
+    //เมื่อ click ที่ card element จะไปยังหน้า ManageDevices พร้อมทั้งส่ง buildingID prop เป็น state ไปด้วย
     const handleClick = useCallback((buildingID) => {
-        navigate('/INT/devices', { state: { buildingID: buildingID } });
+        navigate('/internal/manage-devices', { state: { buildingID: buildingID } });
     }, [navigate]);
 
     const parkingCard = useMemo(() => {
@@ -57,7 +57,7 @@ function DeviceBuilding() {
     
     return (
         <div className='page-layout'>
-            <div id='device-building-page-container'>
+            <div id='DEVICE-BUILDINGS-PAGE-CONTAINER'>
                 <h1>กรุณาเลือก อาคาร/ลานจอดรถยนต์</h1>
                 <div className='card-group'>
                     {parkingCard}
@@ -67,4 +67,4 @@ function DeviceBuilding() {
     );
 };
 
-export default DeviceBuilding
+export default DeviceBuildings

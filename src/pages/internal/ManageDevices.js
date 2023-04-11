@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import './DeviceCRUD.css'
+import './ManageDevices.css'
 import PrevPageButton from '../../components/button/PrevPageButton'
 import ModalAddDevice from '../../components/modal/ModalAddDevice'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
 
-function DeviceCRUD() {
+function ManageDevices() {
     const location = useLocation();
     const navigate = useNavigate();
     const buildingID = location.state.buildingID;
@@ -25,7 +25,7 @@ function DeviceCRUD() {
 
     const handleClick = useCallback((e, floorIndex, deviceID) => {
         e.stopPropagation();
-        navigate('/INT/device-information', {
+        navigate('/internal/device-info', {
             state: {
                 buildingID: buildingID,
                 floorIndex: floorIndex,
@@ -96,7 +96,9 @@ function DeviceCRUD() {
                                 >
                                     <div className='card-header'>
                                         <img 
-                                            src={device.image ? device.image : "/images/pexels-photomix-company-96612.jpg"} 
+                                            src={device.image ? device.image :
+                                                 "/images/Camera_test.jpg"
+                                                } 
                                             alt={device.deviceName}
                                         />
                                     </div>
@@ -153,9 +155,9 @@ function DeviceCRUD() {
     return (
         <div className='page-layout'>
             {modalOpen && <ModalAddDevice setOpenModal={setModalOpen} buildingID={buildingID} setDevice={addNewDevice}/>}
-            <div id='deviceCRUD-page-container'>
+            <div id='MANAGE-DEVICES-PAGE-CONTAINER'>
                 <div 
-                    id='deviceCRUD-page-banner' 
+                    id='MANAGE-DEVICES-PAGE-BANNER' 
                     style={{
                         backgroundImage: `url(${buildingDetail.image ? buildingDetail.image : "https://smart-park.ino.nectec.or.th:60249/smartparking/images/buildings/nstda/id_12_sd/front.jpg"})`
                     }}
@@ -164,10 +166,10 @@ function DeviceCRUD() {
                     <button id='add-device-btn' onClick={() => setModalOpen(true)}>เพิ่มอุปกรณ์</button>
                 </div>
 
-                <h1 id='deviceCRUD-page-title'>{buildingDetail.buildingName}</h1>
+                <h1 id='MANAGE-DEVICES-PAGE-TITLE'>{buildingDetail.buildingName}</h1>
 
                 {loading ? (<p>Loading...</p>) : (
-                    <div id='deviceCRUD-page-content'>
+                    <div id='MANAGE-DEVICES-PAGE-CONTENT'>
                         {content}
                     </div>
                 )}
@@ -177,4 +179,4 @@ function DeviceCRUD() {
     );
 };
 
-export default DeviceCRUD
+export default ManageDevices

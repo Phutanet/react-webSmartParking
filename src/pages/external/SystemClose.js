@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import './SystemClosing.css'
+import './SystemClose.css'
 import axios from 'axios'
 
-function SystemClosing() {
+function SystemClose() {
   const firstRender = useRef(true);
   const [systemInfo, setSystemInfo] = useState({});
 
@@ -38,4 +38,4 @@ function SystemClosing() {
   );
 };
 
-export default SystemClosing
+export default SystemClose

@@ -1,11 +1,11 @@
 import React, {useEffect, useState, useMemo, useRef} from 'react';
-import './MessageDealing.css';
+import './ContactMessage.css';
 import axios from 'axios';
 import { useTable, useGlobalFilter, usePagination } from "react-table";
 import { GlobalFilter } from './GlobalFilter';
 import Swal from 'sweetalert2';
 
-function MessageDealing() {
+function ContactMessage() {
     const firstRender = useRef(true);
     const [messageArray, setMessageArray] = useState([]);
 
@@ -117,7 +117,7 @@ function MessageDealing() {
 
   return (
     <div className='page-layout'>
-        <div id='msgdealing-content'>
+        <div id='CONTACTMSG-PAGE-CONTAINER'>
             <div className='table-container'>
                 <div className='table-header'>
                     <h1>ข้อความติดต่อ</h1>
@@ -167,4 +167,4 @@ function MessageDealing() {
   );
 };
 
-export default MessageDealing
+export default ContactMessage

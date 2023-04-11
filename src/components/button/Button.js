@@ -3,12 +3,11 @@ import './Button.css';
 
 function Button(props) {
   return (
-    <div className='button-container'>
+    <div className={props.className}>
         <button 
-          type={props.type}
-          className={props.className} 
-          onClick={props.onClick} 
-          disabled={props.disabled}
+            type={props.type}
+            onClick={props.onClick}
+            disabled={props.disable}
         >
             {props.label}
         </button>

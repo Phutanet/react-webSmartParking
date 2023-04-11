@@ -1,4 +1,4 @@
-#buildingCRUD-page-container {
+#MANAGE-BUILDINGS-PAGE-CONTAINER {
     width: 100%;
     min-height: 100vh;
     background-color: #dde0e3;
@@ -8,14 +8,14 @@
     align-items: center;
 }
 
-#buildingCRUD-page-container h1 {
+#MANAGE-BUILDINGS-PAGE-CONTAINER h1 {
     margin-top: 1em;
     margin-bottom: 2em;
     font-size: clamp(1.25rem, 2vw, 2rem);
     color: #222831;
 }
 
-#buildingCRUD-page-container .card-group {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group {
     max-width: 1200px;
     width: 100%;
     display: grid;
@@ -27,7 +27,7 @@
 
 
 
-#buildingCRUD-page-container .card-group .card-container {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .card-container {
     border: none;
     border-radius: .25rem;
     overflow: hidden;
@@ -35,16 +35,16 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
 }
 
-#buildingCRUD-page-container .card-group .card-container:hover {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .card-container:hover {
     transform: scale(1.02);
     transition: transform .3s;
 }
 
-#buildingCRUD-page-container .card-group .card-container .card-header {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .card-container .card-header {
     margin-bottom: 0.5rem;
 }
 
-#buildingCRUD-page-container .card-group .card-container .card-header img {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .card-container .card-header img {
     display: block;
     width: 100%;
     max-height: 300px;
@@ -53,11 +53,11 @@
     object-position: center;
 }
 
-#buildingCRUD-page-container .card-group .card-container .card-body {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .card-container .card-body {
     padding: 0 1em;
 }
 
-#buildingCRUD-page-container .card-group .card-container .card-body p {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .card-container .card-body p {
     font-size: clamp(0.75rem, 2vw, 1.125rem);
     font-weight: 600;
 }
@@ -106,7 +106,7 @@ Adding Card Style
 ------------------------------
 ------------------------------ */
 
-#buildingCRUD-page-container .card-group .adding-card-container {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .adding-card-container {
     border: none;
     outline: none;
     background: none;
@@ -117,14 +117,14 @@ Adding Card Style
     padding: 2em 0;
 }
 
-#buildingCRUD-page-container .card-group .adding-card-container button {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .adding-card-container button {
     border: none;
     outline: none;
     background: none;
     cursor: pointer;
 }
 
-#buildingCRUD-page-container .card-group .adding-card-container button i {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .adding-card-container button i {
     color: #00D775;
     display: flex;
     align-items: center;
@@ -135,29 +135,29 @@ Adding Card Style
     transition: all 0.3s ease;
 }
 
-#buildingCRUD-page-container .card-group .adding-card-container button p {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .adding-card-container button p {
     color: #222831;
     font-size: clamp(1rem, 2vw, 1.3rem);
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
-#buildingCRUD-page-container .card-group .adding-card-container button:hover i {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .adding-card-container button:hover i {
     color: #00bd68;
 }
 
-#buildingCRUD-page-container .card-group .adding-card-container button:hover p {
+#MANAGE-BUILDINGS-PAGE-CONTAINER .card-group .adding-card-container button:hover p {
     color: #00bd68;
 }
 
 @media (max-width: 800px) {
-    #buildingCRUD-page-container .card-group {
+    #MANAGE-BUILDINGS-PAGE-CONTAINER .card-group {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 400px) {
-    #buildingCRUD-page-container .card-group {
+    #MANAGE-BUILDINGS-PAGE-CONTAINER .card-group {
         grid-template-columns: repeat(1, 1fr);
     }
 }

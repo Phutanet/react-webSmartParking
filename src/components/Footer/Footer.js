@@ -2,6 +2,10 @@ import React from 'react';
 import './Footer.css';
 
 function Footer() {
+    const handleAnchorClick = (e) => {
+        e.preventDefault();
+    };
+
   return (
     <footer>
         <div className="footer-content">
@@ -26,21 +30,21 @@ function Footer() {
                 <div className='footer-content-body-right f-content-box'>
                     <div className='footer-content-body-topic'>ติดต่อเรา</div>
                     <div className='footer-content-phone'>
-                        <a href='#!'><i className="fa-solid fa-phone-volume"></i>02-564-6900</a>
+                        <p><i className="fa-solid fa-phone-volume"></i>02-564-6900</p>
                     </div>
                     <div className='footer-content-fax'>
-                        <a href='#!'><i className="fa-solid fa-fax"></i>02-564-6901-3</a>
+                        <p><i className="fa-solid fa-fax"></i>02-564-6901-3</p>
                     </div>
                     <div className='footer-content-email'>
-                        <a href='#!'><i className="fa-solid fa-envelope"></i>info@nectec.or.th</a>
+                        <p><i className="fa-solid fa-envelope"></i>info@nectec.or.th</p>
                     </div>
                     <div className='footer-content-location'>
-                        <a href='#!'>
+                        <p>
                             <i className="fa-solid fa-location-dot"></i>
                             ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ <br/>
                             112 ถนนพหลโยธิน ตำบลคลองหนึ่ง อำเภอคลองหลวง <br/>
                             จังหวัดปทุมธานี 12120
-                        </a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -55,8 +59,8 @@ function Footer() {
                     </a>All rights reserved
                 </span>
                 <span>
-                <a href="#!">Privacy policy</a>
-                <a href="#!">Terms & condition</a>
+                <a href="#!" onClick={handleAnchorClick}>Privacy policy</a>
+                <a href="#!" onClick={handleAnchorClick}>Terms & condition</a>
                 </span>
             </div>
         </div>

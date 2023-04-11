@@ -9,7 +9,7 @@ const fetchStatus = async () => {
   return status;
 };
 
-const CheckStatusSystem = () => {
+const CheckSystemStatus = () => {
   const firstRender = useRef(true);
   const [isValid, setIsValid] = useState(false);
   const role = localStorage.getItem('role');
@@ -27,11 +27,11 @@ const CheckStatusSystem = () => {
 
         //กรณีที่สถานะระบบปิด และไม่มีตำแหน่ง
         if (status === false && role === null) {
-          window.location.href = '/404/PageNotFound';
+          window.location.href = '/system-close';
         }
         //กรณีสถานะระบบปิด และตำแหน่งไม่ใช่ admin
         else if (status === false && role !== "admin") {
-          window.location.href = '/404/PageNotFound';
+          window.location.href = '/system-close';
         }
         else  {
           setIsValid(true);
@@ -47,4 +47,4 @@ const CheckStatusSystem = () => {
 
 };
 
-export default CheckStatusSystem;
+export default CheckSystemStatus;

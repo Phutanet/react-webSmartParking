@@ -18,7 +18,7 @@ function NavigationBarInternal() {
         localStorage.removeItem("accessToken")
         localStorage.removeItem("role")
         localStorage.removeItem("email")
-        window.location.href = "/EXT/login"
+        window.location.href = "/login"
     };
 
   return (
@@ -28,7 +28,7 @@ function NavigationBarInternal() {
             <i className="fa-solid fa-bars hamburger-icon" onClick={toggleMenu}></i>
             {/* logo */}
             <div className='nav-logo-container'>
-                <Link to='/INT/carpark-crud' className='nav-logo-text'>Smart Parking</Link>
+                <Link to='/internal/handle-buildings' className='nav-logo-text'>Smart Parking</Link>
             </div>
             
             <div className='nav-menu-container' style={{ left }}>
@@ -41,7 +41,7 @@ function NavigationBarInternal() {
                 <ul className='nav-item-ul'>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/INT/carpark-crud' 
+                        to='/internal/manage-buildings' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
@@ -50,7 +50,7 @@ function NavigationBarInternal() {
                     </li>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/INT/places-for-device' 
+                        to='/internal/device-buildings' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
@@ -59,12 +59,12 @@ function NavigationBarInternal() {
                     </li>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/INT/message-dealing' 
+                        to='/internal/contact-message' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive || 
-                            ['/INT/message-dealing', 
-                            '/INT/user-accounts', 
-                            '/INT/register', 
-                            '/INT/system-setting']
+                            ['/internal/contact-message', 
+                            '/internal/user-accounts', 
+                            '/internal/register', 
+                            '/internal/system-setting']
                             .includes(window.location.pathname) ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
@@ -74,28 +74,28 @@ function NavigationBarInternal() {
                         <ul className='nav-sub-item-ul'>
                             <li className='nav-item-li'>
                                 <NavLink 
-                                to='/INT/message-dealing' 
+                                to='/internal/contact-message' 
                                 className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                                 onClick={toggleMenu}
                                 >ข้อความติดต่อ</NavLink>
                             </li>
                             <li className='nav-item-li'>
                                 <NavLink 
-                                to='/INT/user-accounts'
+                                to='/internal/user-accounts'
                                 className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                                 onClick={toggleMenu}
                                 >ผู้ใช้งาน</NavLink>
                             </li>
                             <li className='nav-item-li'>
                                 <NavLink 
-                                to='/INT/register' 
+                                to='/internal/register' 
                                 className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                                 onClick={toggleMenu}
                                 >สร้างบัญชีผู้ใช้</NavLink>
                             </li>
                             <li className='nav-item-li'>
                                 <NavLink 
-                                to='/INT/system-setting'
+                                to='/internal/system-setting'
                                 className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                                 onClick={toggleMenu}
                                 >ตั้งค่าระบบ</NavLink>
@@ -104,7 +104,7 @@ function NavigationBarInternal() {
                     </li>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/INT/profile' 
+                        to='/internal/profile' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
@@ -113,7 +113,7 @@ function NavigationBarInternal() {
                     </li>
                     <li className='nav-item-li'>
                         <NavLink 
-                        to='/EXT/login' 
+                        to='/login' 
                         className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
                         onClick={() => {toggleMenu(); handleLogout();}}
                         >
