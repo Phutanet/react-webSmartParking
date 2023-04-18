@@ -14,7 +14,7 @@ function LeafletMap() {
     const firstRender = useRef(true);
     const [dataResponse, setDataResponse] = useState([]);
     const mapRef = useRef();
-    const thailand = [13.736717 , 100.523186];
+    const nectec = [14.077828 , 100.601605];
     
     let DefaultIcon = L.icon({
       iconUrl: icon,
@@ -49,8 +49,8 @@ function LeafletMap() {
   return (
     <MapContainer 
         style={{height:"100%", width:"100%"}}
-        center={thailand}
-        zoom={7}
+        center={nectec}
+        zoom={16}
         ref={mapRef}
     >
         <TileLayer 
