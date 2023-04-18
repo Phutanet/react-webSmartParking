@@ -24,7 +24,9 @@ function Footer() {
             <div className="footer-content-body">
                 <div className='footer-content-body-left f-content-box'>
                     <div className='footer-content-body-topic'>เกี่ยวกับเรา</div>
-                    <p>Dolore tempor labore est no et lorem diam et lorem. Stet at magna at clita lorem invidunt kasd et invidunt. Justo rebum ea eirmod at invidunt magna, lorem accusam amet sit nonumy at. Et dolores consetetur sed sadipscing ipsum rebum..</p>
+                    <p>
+                        โครงการระบบแสดงที่จอดรถยนต์อัจฉริยะคือโครงการพัฒนาซอฟต์แวร์ช่วยเหลือผู้ขับขี่รถยนต์โดยการบอกจำนวนที่จอดรถยนต์ภายในสถานที่หรืออาคารจอดรถยนต์ด้วยข้อมูลที่เก็บจากกล้องวงจรปิดที่ติดตั้งไว้ภายในสถานที่หรืออาคารจอดรถยนต์
+                    </p>
                 </div>
 
                 <div className='footer-content-body-right f-content-box'>
