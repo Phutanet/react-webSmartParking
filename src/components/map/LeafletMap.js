@@ -64,7 +64,7 @@ function LeafletMap() {
             position={[building.lat, building.lng]}
             icon={customMarkerIcon}
           >
-            <Popup>
+            <Popup className="popup-marker">
               <b>{building.buildingName}</b>
               <img src={building.image} alt={building.buildingName} />
             </Popup>

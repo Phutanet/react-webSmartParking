@@ -4,3 +4,11 @@
     border: none;
     color: #f96d00;
 }
+
+.popup-marker {
+    width: 300px;
+}
+
+.popup-marker img {
+    width: 100%;
+}

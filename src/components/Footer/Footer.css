@@ -163,6 +163,17 @@ footer .footer-copyright .footer-copyright-body {
   margin-right: 10px;
 }
 
+footer .footer-credit {
+  width: 100%;
+  background: #222831;
+}
+
+.footer-credit p {
+  font-size: 0.125rem;
+  color: #222831;
+}
+
+
 @media (max-width: 900px) {
   footer .footer-content .footer-content-body {
     flex-wrap: wrap;

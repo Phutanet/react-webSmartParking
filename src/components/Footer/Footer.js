@@ -66,6 +66,10 @@ function Footer() {
                 </span>
             </div>
         </div>
+
+        <div className="footer-credit">
+            <p><i>Developed by Mr.Phutanet Phuangtanasan.</i></p>
+        </div>
   </footer>
   );
 };

@@ -28,7 +28,7 @@ function NavigationBarInternal() {
             <i className="fa-solid fa-bars hamburger-icon" onClick={toggleMenu}></i>
             {/* logo */}
             <div className='nav-logo-container'>
-                <Link to='/internal/handle-buildings' className='nav-logo-text'>Smart Parking</Link>
+                <Link to='/' className='nav-logo-text'>Smart Parking</Link>
             </div>
             
             <div className='nav-menu-container' style={{ left }}>
@@ -42,7 +42,13 @@ function NavigationBarInternal() {
                     <li className='nav-item-li'>
                         <NavLink 
                         to='/internal/manage-buildings' 
-                        className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
+                        className={({ isActive }) => "nav-item-li-a" + (isActive || 
+                            [
+                                '/',
+                                '/internal/manage-buildings',
+                                '/parking-info'
+                            ]
+                            .includes(window.location.pathname) ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
                             ที่จอดรถ
@@ -51,7 +57,13 @@ function NavigationBarInternal() {
                     <li className='nav-item-li'>
                         <NavLink 
                         to='/internal/device-buildings' 
-                        className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
+                        className={({ isActive }) => "nav-item-li-a" + (isActive || 
+                            [
+                                '/internal/device-buildings',
+                                '/internal/manage-devices',
+                                '/internal/device-info'
+                            ]
+                            .includes(window.location.pathname) ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
                             CCTV

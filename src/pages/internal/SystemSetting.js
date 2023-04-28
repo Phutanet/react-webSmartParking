@@ -52,6 +52,8 @@ function SystemSetting() {
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 1500
+                    }).then(() => {
+                        window.location.reload();
                     })
                 })
                 .catch((err) => {
@@ -99,7 +101,6 @@ function SystemSetting() {
                                 onClick={() => {
                                     setConfigName(entry.name); 
                                     setStatus(entry.status);
-                                    setAnnounceMsg(entry.msg);
                                     toggle(index);
                                 }}
                             >
@@ -131,6 +132,7 @@ function SystemSetting() {
                                         onChange={(e) => setAnnounceMsg(e.target.value)}
                                         value={announceMsg}
                                         placeholder="ข้อความประกาศ/Announcements"
+                                        required={true}
                                     />
                                     <div className='btn-container'>
                                         <button type='submit' className='submit-btn'>ตั้งค่า/Apply</button>

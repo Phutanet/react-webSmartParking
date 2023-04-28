@@ -35,7 +35,12 @@ function NavigationBarExternal() {
                     <li className='nav-item-li'>
                         <NavLink 
                         to='/buildings' 
-                        className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
+                        className={({ isActive }) => "nav-item-li-a" + (isActive || 
+                            [
+                                '/buildings',
+                                '/parking-info'
+                            ]
+                            .includes(window.location.pathname) ? " activated" : "")} 
                         onClick={toggleMenu} 
                         >
                             ที่จอดรถ
@@ -62,7 +67,12 @@ function NavigationBarExternal() {
                     <li className='nav-item-li'>
                         <NavLink 
                         to='/login' 
-                        className={({ isActive }) => "nav-item-li-a" + (isActive ? " activated" : "")} 
+                        className={({ isActive }) => "nav-item-li-a" + (isActive || 
+                            [
+                                '/',
+                                '/login'
+                            ]
+                            .includes(window.location.pathname) ? " activated" : "")} 
                         onClick={toggleMenu}
                         >
                             เข้าสู่ระบบ/เจ้าหน้าที่

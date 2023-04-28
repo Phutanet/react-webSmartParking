@@ -156,12 +156,12 @@ function ManageDevices() {
         <div className='page-layout'>
             {modalOpen && <ModalAddDevice setOpenModal={setModalOpen} buildingID={buildingID} setDevice={addNewDevice}/>}
             <div id='MANAGE-DEVICES-PAGE-CONTAINER'>
-                <div 
-                    id='MANAGE-DEVICES-PAGE-BANNER' 
-                    style={{
-                        backgroundImage: `url(${buildingDetail.image ? buildingDetail.image : "https://smart-park.ino.nectec.or.th:60249/smartparking/images/buildings/nstda/id_12_sd/front.jpg"})`
-                    }}
-                >
+                <div id='MANAGE-DEVICES-PAGE-BANNER'>
+                    <img 
+                        src={buildingDetail.image ? buildingDetail.image : ""} 
+                        alt={buildingDetail.buildingName}
+                    />
+                    <div className='banner-overlay'></div>
                     <PrevPageButton />
                     <button id='add-device-btn' onClick={() => setModalOpen(true)}>เพิ่มอุปกรณ์</button>
                 </div>

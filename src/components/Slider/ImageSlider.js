@@ -35,7 +35,7 @@ const ImageSlider = () => {
         setSlideIndex(index)
     }
 
-// ทำการ slide อัตโนมัติ
+// ทำการ slide อัตโนมัติในทุกๆ 3 วินาที
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();

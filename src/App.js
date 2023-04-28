@@ -11,6 +11,7 @@ import NavigationBarExternal from './components/navbar/NavigationBarExternal'
 import NavigationBarInternal from './components/navbar/NavigationBarInternal'
 import Footer from './components/footer/Footer'
 
+
 // EXTERNAL COMPONENTS
 import Buildings from "./pages/external/Buildings"
 import ParkingInfo from "./pages/external/ParkingInfo"

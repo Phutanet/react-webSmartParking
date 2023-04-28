@@ -96,14 +96,12 @@ function ParkingInfo() {
     return (
         <div className='page-layout'>
             <div id='PARKINGINFO-page-container'>
-                <div 
-                    id='PARKINGINFO-page-banner' 
-                    style={{
-                        backgroundImage: `url(${buildingDetail.image ? buildingDetail.image : 
-                            "https://smart-park.ino.nectec.or.th:60249/smartparking/images/buildings/nstda/id_19_inc2/front.jpg"
-                        })`
-                    }}
-                >
+                <div id='PARKINGINFO-page-banner'>
+                    <img 
+                        src={buildingDetail.image ? buildingDetail.image : ""} 
+                        alt={buildingDetail.buildingName} 
+                    />
+                    <div className='banner-overlay'></div>
                     <PrevPageButton />
                 </div>
                 <div id='PARKINGINFO-page-title'>
