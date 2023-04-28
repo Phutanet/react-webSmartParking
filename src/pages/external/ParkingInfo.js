@@ -25,6 +25,7 @@ function ParkingInfo() {
     const currentTime = useCurrentTime();
     const [buildingDetail, setBuildingDetail] = useState({});
     const [floors, setFloors] = useState([]);
+    const [visible, setVisible] = useState(true);
     const data = useMemo(() => floors, [floors]);
 
     const columns = useMemo(() => [
@@ -70,6 +71,9 @@ function ParkingInfo() {
     const tableInstance = useTable({ columns, data });
     const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} =  tableInstance;
 
+    const handleVisible = () => {
+        setVisible(!visible);
+    };
 
     useEffect(() => {
         const fetchBuildingDetail = async () => {
@@ -96,13 +100,19 @@ function ParkingInfo() {
     return (
         <div className='page-layout'>
             <div id='PARKINGINFO-page-container'>
-                <div id='PARKINGINFO-page-banner'>
+                <div className={visible ? "PARKINGINFO-page-banner-visible" : "PARKINGINFO-page-banner-hidden"}>
                     <img 
                         src={buildingDetail.image ? buildingDetail.image : ""} 
                         alt={buildingDetail.buildingName} 
                     />
                     <div className='banner-overlay'></div>
                     <PrevPageButton />
+                    <button className='banner-visible-btn' onClick={handleVisible}>
+                        {visible ? 
+                            <i className="fa-solid fa-eye-slash"></i> 
+                            : <i className="fa-solid fa-eye"></i>
+                        }
+                    </button>
                 </div>
                 <div id='PARKINGINFO-page-title'>
                     <h1>{buildingDetail.buildingName}</h1>
